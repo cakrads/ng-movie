@@ -1,9 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { hlmH1, hlmP } from './shared/components/ui-typography-helm/src';
-import { HlmButtonDirective } from './shared/components/ui-button-helm/src';
-import { CarouselComponent } from './shared/components/ui-carousel-helm/ui-carousel-helm.component';
+import { hlmH1, hlmP } from './shared/components/ui/ui-typography-helm/src';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { CarouselComponent } from '@components/caraousel/carousel.component';
+import { ImageComponent } from './shared/components/image/image.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { CarouselComponent } from './shared/components/ui-carousel-helm/ui-carou
     RouterOutlet,
     HlmButtonDirective,
     CarouselComponent,
+    ImageComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

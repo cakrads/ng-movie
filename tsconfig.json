@@ -3,32 +3,28 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@app/*": [
-        "src/app/*"
-      ],
-      "@core/*": [
-        "src/app/core/*"
-      ],
-      "@shared/*": [
-        "src/app/shared/*"
-      ],
-      "@page/*": [
-        "src/app/page/*"
-      ],
+      "@app/*": ["src/app/*"],
+      "@core/*": ["src/app/core/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@components/*": ["src/app/shared/components/*"],
+      "@page/*": ["src/app/page/*"],
       "@spartan-ng/typography": [
         "src/app/shared/components/ui/typography/index.ts"
       ],
       "@spartan-ng/ui-typography-helm": [
-        ".\\src/app/shared/components/ui-typography-helm/src/index.ts"
+        "src/app/shared/components/ui/ui-typography-helm/src/index.ts"
       ],
       "@spartan-ng/ui-button-helm": [
-        ".\\src/app/shared/components/ui-button-helm/src/index.ts"
+        ".\\src/app/shared/components/ui/ui-button-helm/src/index.ts"
       ],
       "@spartan-ng/ui-carousel-helm": [
-        ".\\src/app/shared/components/ui-carousel-helm/src/index.ts"
+        ".\\src/app/shared/components/ui/ui-carousel-helm/src/index.ts"
       ],
       "@spartan-ng/ui-icon-helm": [
-        ".\\src/app/shared/components/ui-icon-helm/src/index.ts"
+        ".\\src/app/shared/components/ui/ui-icon-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-aspectratio-helm": [
+        ".\\src/app/shared/components/ui/ui-aspectratio-helm/src/index.ts"
       ]
     },
     "outDir": "./dist/out-tsc",

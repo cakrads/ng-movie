@@ -4,7 +4,7 @@ import { HlmCarouselComponent, HlmCarouselContentComponent, HlmCarouselItemCompo
 @Component({
   selector: 'carousel',
   imports: [HlmCarouselComponent, HlmCarouselContentComponent, HlmCarouselItemComponent, HlmCarouselNextComponent, HlmCarouselPreviousComponent],
-  templateUrl: './ui-carousel-helm.component.html',
+  templateUrl: './carousel.component.html',
 })
 export class CarouselComponent {
   @Input({ required: true }) items: any[] = [];

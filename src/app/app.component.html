@@ -1,10 +1,15 @@
-<div class="flex flex-col items-center py-5">
+<div class="flex flex-col items-center py-5 ">
   <h1 [class]="hlmH1">Spartan + Tailwind CSS in Angular!</h1>
   <p [class]="hlmP">
-    Integrasi Tailwind CSS berhasil dilakukan.
+    Tailwind CSS successfully integrated.
   </p>
   <button hlmBtn>Button</button>
+
+  <carousel [items]="carouselItems"></carousel>
+
+  <app-image ngSrc="https://picsum.photos/400/300" alt="Mountain views" [width]="400" [height]="300"
+    [aspectRatio]="4 / 3" [prioritize]="true"></app-image>
+
 </div>
 
-<carousel [items]="carouselItems"></carousel>
 <router-outlet />

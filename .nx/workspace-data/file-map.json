@@ -13,6 +13,21 @@
     ],
     "@page/*": [
       "src/app/page/*"
+    ],
+    "@spartan-ng/typography": [
+      "src/app/shared/components/ui/typography/index.ts"
+    ],
+    "@spartan-ng/ui-typography-helm": [
+      ".\\src/app/shared/components/ui-typography-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-button-helm": [
+      ".\\src/app/shared/components/ui-button-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-carousel-helm": [
+      ".\\src/app/shared/components/ui-carousel-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-icon-helm": [
+      ".\\src/app/shared/components/ui-icon-helm/src/index.ts"
     ]
   },
   "nxJsonPlugins": [],
@@ -45,19 +60,19 @@
         },
         {
           "file": "angular.json",
-          "hash": "5212066419320638480"
+          "hash": "8395310425104675539"
         },
         {
           "file": "components.json",
-          "hash": "15730439851048063961"
+          "hash": "3762472281959755045"
         },
         {
           "file": "package-lock.json",
-          "hash": "18044982660533244551"
+          "hash": "3637887197413818335"
         },
         {
           "file": "package.json",
-          "hash": "17268329082033407731",
+          "hash": "14143299800521916616",
           "deps": [
             "npm:@angular-devkit/build-angular",
             "npm:@angular/cli",
@@ -74,7 +89,9 @@
             "npm:karma-jasmine",
             "npm:karma-jasmine-html-reporter",
             "npm:postcss",
+            "npm:tailwind-merge",
             "npm:tailwindcss",
+            "npm:tailwindcss-animate",
             "npm:typescript",
             "npm:@angular/animations",
             "npm:@angular/cdk",
@@ -87,7 +104,13 @@
             "npm:@angular/platform-server",
             "npm:@angular/router",
             "npm:@angular/ssr",
+            "npm:@ng-icons/core",
+            "npm:@ng-icons/lucide",
+            "npm:@spartan-ng/brain",
             "npm:@spartan-ng/ui-core",
+            "npm:class-variance-authority",
+            "npm:clsx",
+            "npm:embla-carousel-angular",
             "npm:express",
             "npm:rxjs",
             "npm:tslib",
@@ -104,7 +127,7 @@
         },
         {
           "file": "src/app/app.component.html",
-          "hash": "7741782754340526068"
+          "hash": "3869410076249670246"
         },
         {
           "file": "src/app/app.component.spec.ts",
@@ -112,7 +135,7 @@
         },
         {
           "file": "src/app/app.component.ts",
-          "hash": "2296727339919478875"
+          "hash": "6606275374345751718"
         },
         {
           "file": "src/app/app.config.server.ts",
@@ -135,12 +158,132 @@
           "hash": "9174758455407976257"
         },
         {
+          "file": "src/app/shared/components/ui-button-helm/src/index.ts",
+          "hash": "17251273102492170138"
+        },
+        {
+          "file": "src/app/shared/components/ui-button-helm/src/lib/hlm-button.directive.ts",
+          "hash": "11068329498313394712"
+        },
+        {
+          "file": "src/app/shared/components/ui-button-helm/src/lib/hlm-button.token.ts",
+          "hash": "7896754714560199098"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/src/index.ts",
+          "hash": "16079333296582886994"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/src/lib/hlm-carousel-content.component.ts",
+          "hash": "12532381650023935189"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/src/lib/hlm-carousel-item.component.ts",
+          "hash": "1930165786088351138"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/src/lib/hlm-carousel-next.component.ts",
+          "hash": "10744790434014753136"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/src/lib/hlm-carousel-previous.component.ts",
+          "hash": "14310338005559109819"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/src/lib/hlm-carousel.component.ts",
+          "hash": "9864528294990783193"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/ui-carousel-helm.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/ui-carousel-helm.component.html",
+          "hash": "11248800450193398639"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/ui-carousel-helm.component.spec.ts",
+          "hash": "1810856620508199829"
+        },
+        {
+          "file": "src/app/shared/components/ui-carousel-helm/ui-carousel-helm.component.ts",
+          "hash": "3388509985470484808"
+        },
+        {
+          "file": "src/app/shared/components/ui-icon-helm/src/index.ts",
+          "hash": "13072002477516072914"
+        },
+        {
+          "file": "src/app/shared/components/ui-icon-helm/src/lib/hlm-icon.directive.spec.ts",
+          "hash": "9511563528933246212"
+        },
+        {
+          "file": "src/app/shared/components/ui-icon-helm/src/lib/hlm-icon.directive.ts",
+          "hash": "11346938675411282378"
+        },
+        {
+          "file": "src/app/shared/components/ui-icon-helm/src/lib/hlm-icon.token.ts",
+          "hash": "1780499468245078594"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/index.ts",
+          "hash": "16224056619972450008"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-blockquote.directive.ts",
+          "hash": "4655106703405579809"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-code.directive.ts",
+          "hash": "3371181088627764176"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-h1.directive.ts",
+          "hash": "11710552350633541777"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-h2.directive.ts",
+          "hash": "10495170906693550190"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-h3.directive.ts",
+          "hash": "1267275953274826647"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-h4.directive.ts",
+          "hash": "17673317517856679693"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-large.directive.ts",
+          "hash": "12052259617002283673"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-lead.directive.ts",
+          "hash": "13718101351339299160"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-muted.directive.ts",
+          "hash": "8024382635221794232"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-p.directive.ts",
+          "hash": "2225070972315449275"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-small.directive.ts",
+          "hash": "311806842723041133"
+        },
+        {
+          "file": "src/app/shared/components/ui-typography-helm/src/lib/hlm-ul.directive.ts",
+          "hash": "6907008601104340938"
+        },
+        {
           "file": "src/app/shared/utils/cx.ts",
           "hash": "15665122855908415869"
         },
         {
           "file": "src/index.html",
-          "hash": "12917003796760465805"
+          "hash": "2048101631637023248"
         },
         {
           "file": "src/main.server.ts",
@@ -160,7 +303,7 @@
         },
         {
           "file": "tailwind.config.js",
-          "hash": "6315999760220942895"
+          "hash": "7240342183562303286"
         },
         {
           "file": "tsconfig.app.json",
@@ -168,7 +311,7 @@
         },
         {
           "file": "tsconfig.json",
-          "hash": "17608648151314335198"
+          "hash": "2761554542183153197"
         },
         {
           "file": "tsconfig.spec.json",
