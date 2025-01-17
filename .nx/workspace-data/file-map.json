@@ -1,0 +1,181 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.3.1",
+  "pathMappings": {
+    "@app/*": [
+      "src/app/*"
+    ],
+    "@core/*": [
+      "src/app/core/*"
+    ],
+    "@shared/*": [
+      "src/app/shared/*"
+    ],
+    "@page/*": [
+      "src/app/page/*"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "my-movie": [
+        {
+          "file": ".editorconfig",
+          "hash": "8037249353422744134"
+        },
+        {
+          "file": ".gitignore",
+          "hash": "10175894702052279752"
+        },
+        {
+          "file": ".vscode/extensions.json",
+          "hash": "11934160580685414355"
+        },
+        {
+          "file": ".vscode/launch.json",
+          "hash": "17406702432687230417"
+        },
+        {
+          "file": ".vscode/tasks.json",
+          "hash": "10093397977228577162"
+        },
+        {
+          "file": "README.md",
+          "hash": "6590885853273234677"
+        },
+        {
+          "file": "angular.json",
+          "hash": "5212066419320638480"
+        },
+        {
+          "file": "components.json",
+          "hash": "15730439851048063961"
+        },
+        {
+          "file": "package-lock.json",
+          "hash": "18044982660533244551"
+        },
+        {
+          "file": "package.json",
+          "hash": "17268329082033407731",
+          "deps": [
+            "npm:@angular-devkit/build-angular",
+            "npm:@angular/cli",
+            "npm:@angular/compiler-cli",
+            "npm:@spartan-ng/cli",
+            "npm:@types/express",
+            "npm:@types/jasmine",
+            "npm:@types/node",
+            "npm:autoprefixer",
+            "npm:jasmine-core",
+            "npm:karma",
+            "npm:karma-chrome-launcher",
+            "npm:karma-coverage",
+            "npm:karma-jasmine",
+            "npm:karma-jasmine-html-reporter",
+            "npm:postcss",
+            "npm:tailwindcss",
+            "npm:typescript",
+            "npm:@angular/animations",
+            "npm:@angular/cdk",
+            "npm:@angular/common",
+            "npm:@angular/compiler",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/platform-browser",
+            "npm:@angular/platform-browser-dynamic",
+            "npm:@angular/platform-server",
+            "npm:@angular/router",
+            "npm:@angular/ssr",
+            "npm:@spartan-ng/ui-core",
+            "npm:express",
+            "npm:rxjs",
+            "npm:tslib",
+            "npm:zone.js"
+          ]
+        },
+        {
+          "file": "public/favicon.ico",
+          "hash": "3988961587069885523"
+        },
+        {
+          "file": "src/app/app.component.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/app.component.html",
+          "hash": "7741782754340526068"
+        },
+        {
+          "file": "src/app/app.component.spec.ts",
+          "hash": "2037862328855834412"
+        },
+        {
+          "file": "src/app/app.component.ts",
+          "hash": "2296727339919478875"
+        },
+        {
+          "file": "src/app/app.config.server.ts",
+          "hash": "14118414850166199582"
+        },
+        {
+          "file": "src/app/app.config.ts",
+          "hash": "6375422088676758271"
+        },
+        {
+          "file": "src/app/app.routes.server.ts",
+          "hash": "17500618356136685777"
+        },
+        {
+          "file": "src/app/app.routes.ts",
+          "hash": "809736233805555256"
+        },
+        {
+          "file": "src/app/example.html",
+          "hash": "9174758455407976257"
+        },
+        {
+          "file": "src/app/shared/utils/cx.ts",
+          "hash": "15665122855908415869"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "12917003796760465805"
+        },
+        {
+          "file": "src/main.server.ts",
+          "hash": "9257623809215978365"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "4169901790405087765"
+        },
+        {
+          "file": "src/server.ts",
+          "hash": "4520229700478337662"
+        },
+        {
+          "file": "src/styles.css",
+          "hash": "575030603889388887"
+        },
+        {
+          "file": "tailwind.config.js",
+          "hash": "6315999760220942895"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "10414011468447698778"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "17608648151314335198"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "11023685540591620072"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  }
+}
