@@ -15,16 +15,16 @@
         "src/app/shared/components/ui/ui-typography-helm/src/index.ts"
       ],
       "@spartan-ng/ui-button-helm": [
-        ".\\src/app/shared/components/ui/ui-button-helm/src/index.ts"
+        "src/app/shared/components/ui/ui-button-helm/src/index.ts"
       ],
       "@spartan-ng/ui-carousel-helm": [
-        ".\\src/app/shared/components/ui/ui-carousel-helm/src/index.ts"
+        "src/app/shared/components/ui/ui-carousel-helm/src/index.ts"
       ],
       "@spartan-ng/ui-icon-helm": [
-        ".\\src/app/shared/components/ui/ui-icon-helm/src/index.ts"
+        "src/app/shared/components/ui/ui-icon-helm/src/index.ts"
       ],
       "@spartan-ng/ui-aspectratio-helm": [
-        ".\\src/app/shared/components/ui/ui-aspectratio-helm/src/index.ts"
+        "src/app/shared/components/ui/ui-aspectratio-helm/src/index.ts"
       ]
     },
     "outDir": "./dist/out-tsc",
