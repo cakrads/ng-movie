@@ -41,6 +41,9 @@
       ],
       "@spartan-ng/ui-skeleton-helm": [
         ".\\src/app/shared/components/ui/ui-skeleton-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-tabs-helm": [
+        ".\\src/app/shared/components/ui/ui-tabs-helm/src/index.ts"
       ]
     },
     "outDir": "./dist/out-tsc",

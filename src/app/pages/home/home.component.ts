@@ -18,6 +18,12 @@ import {
   HlmCarouselShadowAfterComponent,
 } from '@app/shared/components/ui/ui-carousel-helm/src';
 import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
+import {
+  HlmTabsComponent,
+  HlmTabsContentDirective,
+  HlmTabsListComponent,
+  HlmTabsTriggerDirective,
+} from '@spartan-ng/ui-tabs-helm';
 
 @Component({
   selector: 'home-page',
@@ -35,6 +41,11 @@ import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm
     HlmCarouselShadowAfterComponent,
 
     HlmSkeletonComponent,
+
+    HlmTabsComponent,
+    HlmTabsContentDirective,
+    HlmTabsListComponent,
+    HlmTabsTriggerDirective,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

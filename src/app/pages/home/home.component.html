@@ -19,35 +19,77 @@
   } -->
 </div>
 
-<section class="mb-4">
-  <h3 [ngClass]="[hlmH3, 'mb-4']">Trending</h3>
-  <div class="flex flex-row gap-4 items-center">
-    <hlm-carousel class="w-full" [options]="{ loop: true }">
-      <hlm-carousel-content>
-        @if (trendingMovies.loading) {
-        <hlm-carousel-item *ngFor="let skeleton of loadingSkeleton">
-          <hlm-skeleton class="h-[169px] w-[300px] rounded-lg" />
-        </hlm-carousel-item>
-        } @else {
-        <hlm-carousel-item
-          *ngFor="let content of carouselItems; trackBy: trackByFn"
-        >
-          <app-image
-            ngSrc="https://picsum.photos/300/169"
-            alt="Mountain views"
-            [width]="300"
-            [height]="169"
-            [aspectRatio]="16 / 9"
-            [prioritize]="true"
-            [customClass]="'rounded-lg'"
-          ></app-image>
-        </hlm-carousel-item>
-        }
-      </hlm-carousel-content>
-      <button hlm-carousel-previous class=""></button>
-      <button hlm-carousel-next></button>
-      <hlm-carousel-shadow-before></hlm-carousel-shadow-before>
-      <hlm-carousel-shadow-after></hlm-carousel-shadow-after>
-    </hlm-carousel>
+<hlm-tabs tab="today" class="w-full">
+  <div class="flex flex-row gap-6 items-start">
+    <h3 [ngClass]="[hlmH3]">Trending</h3>
+    <div>
+      <hlm-tabs-list class="w-full grid grid-cols-2" aria-label="tabs trending">
+        <button hlmTabsTrigger="today">Today</button>
+        <button hlmTabsTrigger="week">This Week</button>
+      </hlm-tabs-list>
+    </div>
   </div>
-</section>
+  <div></div>
+  <div hlmTabsContent="today">
+    <div class="flex flex-row gap-4 items-center min-h-[200px]">
+      <hlm-carousel class="w-full" [options]="{ loop: true }">
+        <hlm-carousel-content>
+          @if (trendingMovies.loading) {
+          <hlm-carousel-item *ngFor="let skeleton of loadingSkeleton">
+            <hlm-skeleton class="h-[169px] w-[300px] rounded-lg" />
+          </hlm-carousel-item>
+          } @else {
+          <hlm-carousel-item
+            *ngFor="let content of carouselItems; trackBy: trackByFn"
+          >
+            <app-image
+              ngSrc="https://picsum.photos/300/169"
+              alt="Mountain views"
+              [width]="300"
+              [height]="169"
+              [aspectRatio]="16 / 9"
+              [prioritize]="true"
+              [customClass]="'rounded-lg'"
+            ></app-image>
+          </hlm-carousel-item>
+          }
+        </hlm-carousel-content>
+        <button hlm-carousel-previous class=""></button>
+        <button hlm-carousel-next></button>
+        <hlm-carousel-shadow-before></hlm-carousel-shadow-before>
+        <hlm-carousel-shadow-after></hlm-carousel-shadow-after>
+      </hlm-carousel>
+    </div>
+  </div>
+  <div hlmTabsContent="week">
+    <div class="flex flex-row gap-4 items-center min-h-[200px]">
+      <hlm-carousel class="w-full" [options]="{ loop: true }">
+        <hlm-carousel-content>
+          @if (trendingMovies.loading) {
+          <hlm-carousel-item *ngFor="let skeleton of loadingSkeleton">
+            <hlm-skeleton class="h-[169px] w-[300px] rounded-lg" />
+          </hlm-carousel-item>
+          } @else {
+          <hlm-carousel-item
+            *ngFor="let content of carouselItems; trackBy: trackByFn"
+          >
+            <app-image
+              ngSrc="https://picsum.photos/300/169"
+              alt="Mountain views"
+              [width]="300"
+              [height]="169"
+              [aspectRatio]="16 / 9"
+              [prioritize]="true"
+              [customClass]="'rounded-lg'"
+            ></app-image>
+          </hlm-carousel-item>
+          }
+        </hlm-carousel-content>
+        <button hlm-carousel-previous class=""></button>
+        <button hlm-carousel-next></button>
+        <hlm-carousel-shadow-before></hlm-carousel-shadow-before>
+        <hlm-carousel-shadow-after></hlm-carousel-shadow-after>
+      </hlm-carousel>
+    </div>
+  </div>
+</hlm-tabs>
