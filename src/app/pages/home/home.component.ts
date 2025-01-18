@@ -65,12 +65,29 @@ export class HomePage {
     loading: true,
     data: [] as IMovieData[],
   };
-  movieImage = 'https://image.tmdb.org/t/p/';
+  popularMovies = {
+    loading: true,
+    data: [] as IMovieData[],
+  };
+  popularTv = {
+    loading: true,
+    data: [] as IMovieData[],
+  };
 
   constructor(readonly tmdbService: TmdbService) {}
 
   ngOnInit(): void {
-    this.getTrendingMovieDay();
+    this.getTrendingMovieDay().subscribe({
+      next: (response) => {
+        this.trendingMoviesDay = {
+          loading: false,
+          data: response.results.slice(0, this.maxData),
+        };
+        // get popular after trending day
+        this.getTPopularMovie();
+      },
+      error: () => {},
+    });
   }
 
   _handleTrendingWeek() {
@@ -79,22 +96,18 @@ export class HomePage {
     }
   }
 
-  getTrendingMovieDay(): void {
-    this.tmdbService
-      .getTrending({
-        page: 1,
-        period: 'day',
-        type: 'movie',
-      })
-      .subscribe({
-        next: (response) => {
-          this.trendingMoviesDay = {
-            loading: false,
-            data: response.results.slice(0, this.maxData),
-          };
-        },
-        error: () => {},
-      });
+  _handlePopularTv() {
+    if (!this.popularTv.data.length) {
+      this.getTPopularMovie();
+    }
+  }
+
+  getTrendingMovieDay() {
+    return this.tmdbService.getTrending({
+      page: 1,
+      period: 'day',
+      type: 'movie',
+    });
   }
 
   getTrendingMovieWeek(): void {
@@ -107,6 +120,40 @@ export class HomePage {
       .subscribe({
         next: (response) => {
           this.trendingMoviesWeek = {
+            loading: false,
+            data: response.results.slice(0, this.maxData),
+          };
+        },
+        error: () => {},
+      });
+  }
+
+  getTPopularMovie(): void {
+    this.tmdbService
+      .getPopular({
+        page: 1,
+        type: 'movie',
+      })
+      .subscribe({
+        next: (response) => {
+          this.popularMovies = {
+            loading: false,
+            data: response.results.slice(0, this.maxData),
+          };
+        },
+        error: () => {},
+      });
+  }
+
+  getTPopularTv(): void {
+    this.tmdbService
+      .getPopular({
+        page: 1,
+        type: 'tv',
+      })
+      .subscribe({
+        next: (response) => {
+          this.popularTv = {
             loading: false,
             data: response.results.slice(0, this.maxData),
           };
