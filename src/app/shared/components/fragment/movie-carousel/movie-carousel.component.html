@@ -14,7 +14,7 @@
           [width]="355"
           [height]="200"
           [aspectRatio]="16 / 9"
-          [customClass]="'rounded-lg'"
+          [customClass]="'rounded-lg overflow-hidden hover:cursor-pointer'"
         ></app-image>
         <hlm-hover-card-content
           *brnHoverCardContent
@@ -36,8 +36,8 @@
             >
               {{ movie.title }}
             </a>
-            <span class="text-slate-400 font-semibold"
-              >( {{ movie.release_date }} )
+            <span class="text-slate-400 font-semibold">
+              ( {{ movie.release_date | date : "MMMM YYYY" }} )
             </span>
             <div>
               <p class="line-clamp-3 text-sm font-light">
@@ -45,11 +45,15 @@
               </p>
             </div>
             <div class="mt-auto">
-              <span class="text-yellow-500 text-xl">IMDB SCORE</span>
+              <span class="text-yellow-500 text-xl font-medium">
+                IMDB SCORE
+              </span>
               <span
                 class="text-2xl flex gap-x-1 items-center hover:text-yellow-600"
               >
-                <span class="font-medium">{{ movie.vote_average }}</span>
+                <span class="font-medium">
+                  {{ movie.vote_average | number : "1.2-2" }}
+                </span>
                 <ng-icon class="text-yellow-500" hlm name="lucideStar" />
               </span>
             </div>
