@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { ImageComponent } from '@app/shared/components/ui/image/image.component';
-import { IMovieData } from '@app/services/tmbd/tmdb.service';
+import { IMovieListData } from '@app/services/tmbd/tmdb.service';
 import { lucideStar } from '@ng-icons/lucide';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
@@ -52,7 +52,7 @@ export class MovieCarouselComponent {
   loadingSkeleton = Array.from({ length: 10 }, (_, i) => i + 1);
 
   @Input() loading: boolean = true;
-  @Input() movieData!: IMovieData[];
+  @Input() movieData!: IMovieListData[];
 
   // carouselItems = [
   //   { url: 'https://picsum.photos/500/400', alt: 'Mountain views' },

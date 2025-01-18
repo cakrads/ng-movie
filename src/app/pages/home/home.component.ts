@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { hlmH1, hlmH3, hlmP } from '@components//ui/ui-typography-helm/src';
-import { TmdbService, IMovieData } from '@app/services/tmbd/tmdb.service';
+import { TmdbService, IMovieListData } from '@app/services/tmbd/tmdb.service';
 import {
   HlmTabsComponent,
   HlmTabsContentDirective,
@@ -48,19 +48,19 @@ export class HomePage {
 
   trendingMoviesDay = {
     loading: true,
-    data: [] as IMovieData[],
+    data: [] as IMovieListData[],
   };
   trendingMoviesWeek = {
     loading: true,
-    data: [] as IMovieData[],
+    data: [] as IMovieListData[],
   };
   popularMovies = {
     loading: true,
-    data: [] as IMovieData[],
+    data: [] as IMovieListData[],
   };
   popularTv = {
     loading: true,
-    data: [] as IMovieData[],
+    data: [] as IMovieListData[],
   };
 
   constructor(readonly tmdbService: TmdbService) {}
@@ -119,9 +119,8 @@ export class HomePage {
 
   getTPopularMovie(): void {
     this.tmdbService
-      .getPopular({
+      .getPopularMovie({
         page: 1,
-        type: 'movie',
       })
       .subscribe({
         next: (response) => {
@@ -136,18 +135,15 @@ export class HomePage {
 
   getTPopularTv(): void {
     this.tmdbService
-      .getPopular({
+      .getPopularTv({
         page: 1,
-        type: 'tv',
       })
       .subscribe({
         next: (response) => {
-          console.log('??????');
           this.popularTv = {
             loading: false,
             data: response.results.slice(0, this.maxData),
           };
-          console.log(this.popularTv.loading);
         },
         error: () => {},
       });

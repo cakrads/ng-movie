@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import {
+  IMovieListData,
+  IPopularList,
+  IPopularMovieResponse,
   IPopularParams,
-  IPopularResponse,
+  IPopularTvResponse,
   ITrendingParams,
   ITrendingResponse,
 } from './tmbd.type';
@@ -48,8 +52,8 @@ export class TmdbService {
     return this.http.get<ITrendingResponse>(url);
   }
 
-  getPopular(popularParams: IPopularParams): Observable<IPopularResponse> {
-    const moviePath = `${popularParams.type}/popular`;
+  getPopularMovie(popularParams: IPopularParams): Observable<IPopularList> {
+    const moviePath = `movie/popular`;
     console.log({ moviePath });
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
@@ -57,11 +61,11 @@ export class TmdbService {
     });
     const url = `${this.baseUrl}${moviePath}?${urlParams}`;
     console.info('hit API:', url);
-    return this.http.get<IPopularResponse>(url);
+    return this.http.get<IPopularMovieResponse>(url);
   }
 
-  get(popularParams: IPopularParams): Observable<IPopularResponse> {
-    const moviePath = `${popularParams.type}/popular`;
+  getPopularTv(popularParams: IPopularParams): Observable<IPopularList> {
+    const moviePath = `tv/popular`;
     console.log({ moviePath });
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
@@ -69,7 +73,30 @@ export class TmdbService {
     });
     const url = `${this.baseUrl}${moviePath}?${urlParams}`;
     console.info('hit API:', url);
-    return this.http.get<IPopularResponse>(url);
+    return this.http.get<IPopularTvResponse>(url).pipe(
+      map((response: IPopularTvResponse) => ({
+        ...response,
+        results: response.results.map(
+          (tv): IMovieListData => ({
+            backdrop_path: tv.backdrop_path,
+            id: tv.id,
+            title: tv.name, // TV name becomes the movie title
+            original_title: tv.original_name, // TV original name becomes the movie original title
+            overview: tv.overview,
+            poster_path: tv.poster_path,
+            media_type: 'tv', // Specify that this is TV content
+            adult: tv.adult,
+            original_language: tv.original_language,
+            genre_ids: tv.genre_ids,
+            popularity: tv.popularity,
+            release_date: tv.first_air_date, // TV first air date becomes movie release date
+            video: false, // Default to false as video doesn't apply here
+            vote_average: tv.vote_average,
+            vote_count: tv.vote_count,
+          })
+        ),
+      }))
+    );
   }
 
   getNowPlaying(page: number): Observable<any> {
