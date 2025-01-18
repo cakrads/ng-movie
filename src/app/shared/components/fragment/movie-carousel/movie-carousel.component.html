@@ -1,0 +1,66 @@
+<hlm-carousel class="w-full" [options]="{ loop: true }">
+  <hlm-carousel-content>
+    @if (loading) {
+    <hlm-carousel-item *ngFor="let skeleton of loadingSkeleton">
+      <hlm-skeleton class="w-[355px] h-[200px] rounded-lg" />
+    </hlm-carousel-item>
+    } @else {
+    <hlm-carousel-item *ngFor="let movie of movieData; index as i">
+      <brn-hover-card>
+        <app-image
+          brnHoverCardTrigger
+          [ngSrc]="movieImage + 'w355_and_h200_face' + movie.backdrop_path"
+          [alt]="movie.title"
+          [width]="355"
+          [height]="200"
+          [aspectRatio]="16 / 9"
+          [customClass]="'rounded-lg'"
+        ></app-image>
+        <hlm-hover-card-content
+          *brnHoverCardContent
+          class="flex w-[400px] !rounded-lg !shadow-xl overflow-hidden"
+        >
+          <div class="-mt-4 -ml-4 -mb-4">
+            <app-image
+              [ngSrc]="movieImage + 'w220_and_h330_face' + movie.poster_path"
+              [alt]="'test'"
+              [width]="167"
+              [height]="250"
+              [aspectRatio]="2 / 3"
+              class=""
+            ></app-image>
+          </div>
+          <div class="ml-4 flex flex-col gap-2">
+            <a
+              class="hover:text-red-500 hover:cursor-pointer font-bold md:text-xl line-clamp-2"
+            >
+              {{ movie.title }}
+            </a>
+            <span class="text-slate-400 font-semibold"
+              >( {{ movie.release_date }} )
+            </span>
+            <div>
+              <p class="line-clamp-3 text-sm font-light">
+                {{ movie.overview }}
+              </p>
+            </div>
+            <div class="mt-auto">
+              <span class="text-yellow-500 text-xl">IMDB SCORE</span>
+              <span
+                class="text-2xl flex gap-x-1 items-center hover:text-yellow-600"
+              >
+                <span class="font-medium">{{ movie.vote_average }}</span>
+                <ng-icon class="text-yellow-500" hlm name="lucideStar" />
+              </span>
+            </div>
+          </div>
+        </hlm-hover-card-content>
+      </brn-hover-card>
+    </hlm-carousel-item>
+    }
+  </hlm-carousel-content>
+  <button hlm-carousel-previous></button>
+  <button hlm-carousel-next></button>
+  <hlm-carousel-shadow-before></hlm-carousel-shadow-before>
+  <hlm-carousel-shadow-after></hlm-carousel-shadow-after>
+</hlm-carousel>

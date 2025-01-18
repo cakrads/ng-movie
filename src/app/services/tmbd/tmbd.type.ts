@@ -7,19 +7,20 @@ export interface IResponseList<Result> {
 
 export interface ITrendingParams {
   page: number;
+  period: 'day' | 'week';
   type: 'movie' | 'tv';
 }
 
-export type ITrendingResponse = IResponseList<ITrendingData[]>;
+export type ITrendingResponse = IResponseList<IMovieData[]>;
 
-export interface ITrendingData {
+export interface IMovieData {
   backdrop_path: string;
   id: number;
   title: string;
   original_title: string;
   overview: string;
   poster_path: string;
-  media_type: string;
+  media_type?: string;
   adult: boolean;
   original_language: string;
   genre_ids: number[];

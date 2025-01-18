@@ -1,23 +1,13 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-import { ImageComponent } from '@components//image/image.component';
+import { ImageComponent } from '@app/shared/components/ui/image/image.component';
 import { hlmH1, hlmH3, hlmP } from '@components//ui/ui-typography-helm/src';
 import {
   TmdbService,
-  ITrendingData,
+  IMovieData,
   ITrendingParams,
 } from '@app/services/tmbd/tmdb.service';
-import {
-  HlmCarouselComponent,
-  HlmCarouselContentComponent,
-  HlmCarouselItemComponent,
-  HlmCarouselNextComponent,
-  HlmCarouselPreviousComponent,
-  HlmCarouselShadowABeforeComponent,
-  HlmCarouselShadowAfterComponent,
-} from '@app/shared/components/ui/ui-carousel-helm/src';
-import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
 import { BrnHoverCardModule } from '@spartan-ng/brain/hover-card';
 import { HlmHoverCardModule } from '@spartan-ng/ui-hovercard-helm';
 import {
@@ -26,38 +16,28 @@ import {
   HlmTabsListComponent,
   HlmTabsTriggerDirective,
 } from '@spartan-ng/ui-tabs-helm';
+import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
 
 @Component({
   selector: 'home-page',
   imports: [
     CommonModule,
     HlmButtonDirective,
-    ImageComponent,
-
-    HlmCarouselComponent,
-    HlmCarouselContentComponent,
-    HlmCarouselItemComponent,
-    HlmCarouselNextComponent,
-    HlmCarouselPreviousComponent,
-    HlmCarouselShadowABeforeComponent,
-    HlmCarouselShadowAfterComponent,
-
-    HlmSkeletonComponent,
 
     HlmTabsComponent,
     HlmTabsContentDirective,
     HlmTabsListComponent,
     HlmTabsTriggerDirective,
-
     BrnHoverCardModule,
     HlmHoverCardModule,
+
+    MovieCarouselComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage {
-  title = 'my-movie';
   hlmH1 = hlmH1;
   hlmH3 = hlmH3;
   hlmP = hlmP;
@@ -77,39 +57,47 @@ export class HomePage {
     return index;
   }
 
-  trendingMovies = {
+  trendingMoviesDay = {
     loading: true,
-    movie: [] as ITrendingData[],
-    tv: [] as ITrendingData[],
+    data: [] as IMovieData[],
+  };
+  trendingMoviesWeek = {
+    loading: true,
+    data: [] as IMovieData[],
   };
   movieImage = 'https://image.tmdb.org/t/p/';
 
-  constructor() {}
+  constructor(readonly tmdbService: TmdbService) {}
 
   ngOnInit() {
-    // this.getTrendingMovie({
-    //   page: 1,
-    //   type: 'movie',
-    // });
-    // this.getTrendingMovie({
-    //   page: 1,
-    //   type: 'tv',
-    // });
-    setTimeout(() => {
-      this.trendingMovies.loading = false;
-    }, 3000);
+    this.getTrendingMovie({
+      page: 1,
+      period: 'day',
+      type: 'movie',
+    });
+    this.getTrendingMovie({
+      page: 1,
+      period: 'week',
+      type: 'movie',
+    });
   }
 
-  // getTrendingMovie(params: ITrendingParams): void {
-  //   this.tmdbService.getTrending(params).subscribe({
-  //     next: (response) => {
-  //       this.trendingMovies.loading = false;
-  //       this.trendingMovies[params.type] = response.results.slice(0, this.maxData);
-  //     },
-  //     error: () => {},
-  //   });
-  // }
-  // this.moviesService.getMovies(type, page).pipe(take(1)).subscribe(res => {
-  //   this.moviesList = res.results;
-  // });
+  getTrendingMovie(params: ITrendingParams): void {
+    this.tmdbService.getTrending(params).subscribe({
+      next: (response) => {
+        if (params.type === 'movie') {
+          this.trendingMoviesDay = {
+            loading: false,
+            data: response.results.slice(0, this.maxData),
+          };
+        } else {
+          this.trendingMoviesWeek = {
+            loading: false,
+            data: response.results.slice(0, this.maxData),
+          };
+        }
+      },
+      error: () => {},
+    });
+  }
 }

@@ -16,7 +16,7 @@ export class TmdbService {
   constructor(private readonly http: HttpClient) {
     this.baseUrl = environment.tmdbUrl;
     this.defaultParams = {
-      api_key: '',
+      api_key: environment.apiKey,
       language: 'en-US',
       include_adult: false,
     };
@@ -32,13 +32,14 @@ export class TmdbService {
   }
 
   getTrending(trendingParams: ITrendingParams): Observable<ITrendingResponse> {
-    const MOVIE_PATH = `trending/${trendingParams.type}/day`;
+    const moviePath = `trending/${trendingParams.type}/${trendingParams.period}`;
+    console.log({ moviePath });
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
       page: trendingParams.page || 1,
     });
-    const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
-    console.info('url', url);
+    const url = `${this.baseUrl}${moviePath}?${urlParams}`;
+    console.info('hit API:', url);
     return this.http.get<ITrendingResponse>(url);
   }
 

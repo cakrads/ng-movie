@@ -24,4 +24,5 @@ export class ImageComponent {
   @Input() prioritize = false; // Whether to prioritize loading the image
   @Input() aspectRatio!: number; // Aspect ratio for the container (width / height)
   @Input() customClass: string = ''; // Custom class for the container
+  @Input() zoom: boolean = false; // Custom style for the container
 }
