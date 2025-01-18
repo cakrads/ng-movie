@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ITrendingParams, ITrendingResponse } from './tmbd.type';
+import {
+  IPopularParams,
+  IPopularResponse,
+  ITrendingParams,
+  ITrendingResponse,
+} from './tmbd.type';
 import { environment } from '@environments/environment';
 
 export * from './tmbd.type';
@@ -41,6 +46,30 @@ export class TmdbService {
     const url = `${this.baseUrl}${moviePath}?${urlParams}`;
     console.info('hit API:', url);
     return this.http.get<ITrendingResponse>(url);
+  }
+
+  getPopular(popularParams: IPopularParams): Observable<IPopularResponse> {
+    const moviePath = `${popularParams.type}/popular`;
+    console.log({ moviePath });
+    const urlParams = this.generateUrlParams({
+      ...this.defaultParams,
+      page: popularParams.page || 1,
+    });
+    const url = `${this.baseUrl}${moviePath}?${urlParams}`;
+    console.info('hit API:', url);
+    return this.http.get<IPopularResponse>(url);
+  }
+
+  get(popularParams: IPopularParams): Observable<IPopularResponse> {
+    const moviePath = `${popularParams.type}/popular`;
+    console.log({ moviePath });
+    const urlParams = this.generateUrlParams({
+      ...this.defaultParams,
+      page: popularParams.page || 1,
+    });
+    const url = `${this.baseUrl}${moviePath}?${urlParams}`;
+    console.info('hit API:', url);
+    return this.http.get<IPopularResponse>(url);
   }
 
   getNowPlaying(page: number): Observable<any> {

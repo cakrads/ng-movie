@@ -10,7 +10,9 @@
     <div>
       <hlm-tabs-list class="w-full grid grid-cols-2" aria-label="tabs trending">
         <button hlmTabsTrigger="today">Today</button>
-        <button hlmTabsTrigger="week">This Week</button>
+        <button hlmTabsTrigger="week" (click)="_handleTrendingWeek()">
+          This Week
+        </button>
       </hlm-tabs-list>
     </div>
   </div>

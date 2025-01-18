@@ -5,14 +5,6 @@ export interface IResponseList<Result> {
   total_results: number;
 }
 
-export interface ITrendingParams {
-  page: number;
-  period: 'day' | 'week';
-  type: 'movie' | 'tv';
-}
-
-export type ITrendingResponse = IResponseList<IMovieData[]>;
-
 export interface IMovieData {
   backdrop_path: string;
   id: number;
@@ -30,3 +22,16 @@ export interface IMovieData {
   vote_average: number;
   vote_count: number;
 }
+
+export interface ITrendingParams {
+  page: number;
+  period: 'day' | 'week';
+  type: 'movie' | 'tv';
+}
+export type ITrendingResponse = IResponseList<IMovieData[]>;
+
+export interface IPopularParams {
+  page: number;
+  type: 'movie' | 'tv';
+}
+export type IPopularResponse = IResponseList<IMovieData[]>;

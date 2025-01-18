@@ -69,9 +69,14 @@ export class HomePage {
 
   constructor(readonly tmdbService: TmdbService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getTrendingMovieDay();
-    this.getTrendingMovieWeek();
+  }
+
+  _handleTrendingWeek() {
+    if (!this.trendingMoviesWeek.data.length) {
+      this.getTrendingMovieWeek();
+    }
   }
 
   getTrendingMovieDay(): void {
