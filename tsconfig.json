@@ -47,6 +47,9 @@
       ],
       "@spartan-ng/ui-hovercard-helm": [
         ".\\src/app/shared/components/ui/ui-hovercard-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-scrollarea-helm": [
+        ".\\src/app/shared/components/ui/ui-scrollarea-helm/src/index.ts"
       ]
     },
     "outDir": "./dist/out-tsc",

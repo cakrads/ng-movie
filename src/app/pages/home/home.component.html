@@ -65,3 +65,13 @@
     </div>
   </hlm-tabs>
 </section>
+
+<ng-scrollbar hlm class="w-full h-72">
+  <h4 class="mb-4 text-sm font-medium leading-none">Tags</h4>
+  <div class="flex flex-row gap-2">
+    <div class="text-sm" *ngFor="let tag of tags">
+      {{ tag }}
+      <div hlmSeparator class="my-2"></div>
+    </div>
+  </div>
+</ng-scrollbar>

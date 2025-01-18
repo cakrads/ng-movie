@@ -1,15 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-import { ImageComponent } from '@app/shared/components/ui/image/image.component';
 import { hlmH1, hlmH3, hlmP } from '@components//ui/ui-typography-helm/src';
-import {
-  TmdbService,
-  IMovieData,
-  ITrendingParams,
-} from '@app/services/tmbd/tmdb.service';
-import { BrnHoverCardModule } from '@spartan-ng/brain/hover-card';
-import { HlmHoverCardModule } from '@spartan-ng/ui-hovercard-helm';
+import { TmdbService, IMovieData } from '@app/services/tmbd/tmdb.service';
 import {
   HlmTabsComponent,
   HlmTabsContentDirective,
@@ -17,19 +10,21 @@ import {
   HlmTabsTriggerDirective,
 } from '@spartan-ng/ui-tabs-helm';
 import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { HlmScrollAreaDirective } from '@app/shared/components/ui/ui-scrollarea-helm/src';
 
 @Component({
   selector: 'home-page',
   imports: [
     CommonModule,
-    HlmButtonDirective,
 
+    HlmButtonDirective,
     HlmTabsComponent,
     HlmTabsContentDirective,
     HlmTabsListComponent,
     HlmTabsTriggerDirective,
-    BrnHoverCardModule,
-    HlmHoverCardModule,
+    NgScrollbarModule,
+    HlmScrollAreaDirective,
 
     MovieCarouselComponent,
   ],
@@ -43,15 +38,9 @@ export class HomePage {
   hlmP = hlmP;
   maxData = 10;
 
-  loadingSkeleton = Array.from({ length: this.maxData }, (_, i) => i + 1);
-  carouselItems = [
-    { url: 'https://picsum.photos/500/400', alt: 'Mountain views' },
-    { url: 'https://picsum.photos/500/400', alt: 'Forest' },
-    { url: 'https://picsum.photos/500/400', alt: 'Beach' },
-    { url: 'https://picsum.photos/500/400', alt: 'Cityscape' },
-    { url: 'https://picsum.photos/500/400', alt: 'Desert' },
-    { url: 'https://picsum.photos/500/400', alt: 'Snowy Mountain' },
-  ];
+  tags = Array.from({ length: 50 }).map(
+    (_, i, a) => `v1.2.0-beta.${a.length - i}`
+  );
 
   trackByFn(index: number): number {
     return index;
@@ -98,7 +87,7 @@ export class HomePage {
 
   _handlePopularTv() {
     if (!this.popularTv.data.length) {
-      this.getTPopularMovie();
+      this.getTPopularTv();
     }
   }
 
@@ -153,10 +142,12 @@ export class HomePage {
       })
       .subscribe({
         next: (response) => {
+          console.log('??????');
           this.popularTv = {
             loading: false,
             data: response.results.slice(0, this.maxData),
           };
+          console.log(this.popularTv.loading);
         },
         error: () => {},
       });
