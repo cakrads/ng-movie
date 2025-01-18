@@ -70,34 +70,43 @@ export class HomePage {
   constructor(readonly tmdbService: TmdbService) {}
 
   ngOnInit() {
-    this.getTrendingMovie({
-      page: 1,
-      period: 'day',
-      type: 'movie',
-    });
-    this.getTrendingMovie({
-      page: 1,
-      period: 'week',
-      type: 'movie',
-    });
+    this.getTrendingMovieDay();
+    this.getTrendingMovieWeek();
   }
 
-  getTrendingMovie(params: ITrendingParams): void {
-    this.tmdbService.getTrending(params).subscribe({
-      next: (response) => {
-        if (params.type === 'movie') {
+  getTrendingMovieDay(): void {
+    this.tmdbService
+      .getTrending({
+        page: 1,
+        period: 'day',
+        type: 'movie',
+      })
+      .subscribe({
+        next: (response) => {
           this.trendingMoviesDay = {
             loading: false,
             data: response.results.slice(0, this.maxData),
           };
-        } else {
+        },
+        error: () => {},
+      });
+  }
+
+  getTrendingMovieWeek(): void {
+    this.tmdbService
+      .getTrending({
+        page: 1,
+        period: 'week',
+        type: 'movie',
+      })
+      .subscribe({
+        next: (response) => {
           this.trendingMoviesWeek = {
             loading: false,
             data: response.results.slice(0, this.maxData),
           };
-        }
-      },
-      error: () => {},
-    });
+        },
+        error: () => {},
+      });
   }
 }
