@@ -3,12 +3,24 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@app/*": ["src/app/*"],
-      "@core/*": ["src/app/core/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@components/*": ["src/app/shared/components/*"],
-      "@page/*": ["src/app/page/*"],
-      "@environments/*": ["src/environments/*"],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@components/*": [
+        "src/app/shared/components/*"
+      ],
+      "@page/*": [
+        "src/app/page/*"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ],
       "@spartan-ng/typography": [
         "src/app/shared/components/ui/typography/index.ts"
       ],
@@ -26,6 +38,9 @@
       ],
       "@spartan-ng/ui-aspectratio-helm": [
         "src/app/shared/components/ui/ui-aspectratio-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-skeleton-helm": [
+        ".\\src/app/shared/components/ui/ui-skeleton-helm/src/index.ts"
       ]
     },
     "outDir": "./dist/out-tsc",

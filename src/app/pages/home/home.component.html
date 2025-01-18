@@ -17,10 +17,18 @@
       }
     </div>
   } -->
+</div>
 
-  <div class="w-[calc(100%-50px)] my-4">
+<section class="mb-4">
+  <h3 [ngClass]="[hlmH3, 'mb-4']">Trending</h3>
+  <div class="flex flex-row gap-4 items-center">
     <hlm-carousel class="w-full" [options]="{ loop: true }">
       <hlm-carousel-content>
+        @if (trendingMovies.loading) {
+        <hlm-carousel-item *ngFor="let skeleton of loadingSkeleton">
+          <hlm-skeleton class="h-[169px] w-[300px] rounded-lg" />
+        </hlm-carousel-item>
+        } @else {
         <hlm-carousel-item
           *ngFor="let content of carouselItems; trackBy: trackByFn"
         >
@@ -34,19 +42,12 @@
             [customClass]="'rounded-lg'"
           ></app-image>
         </hlm-carousel-item>
+        }
       </hlm-carousel-content>
-      <button hlm-carousel-previous></button>
+      <button hlm-carousel-previous class=""></button>
       <button hlm-carousel-next></button>
+      <hlm-carousel-shadow-before></hlm-carousel-shadow-before>
+      <hlm-carousel-shadow-after></hlm-carousel-shadow-after>
     </hlm-carousel>
   </div>
-
-  <app-image
-    ngSrc="https://picsum.photos/400/300"
-    alt="Mountain views"
-    [width]="400"
-    [height]="300"
-    [aspectRatio]="4 / 3"
-    [prioritize]="true"
-    [customClass]="'rounded-lg'"
-  ></app-image>
-</div>
+</section>

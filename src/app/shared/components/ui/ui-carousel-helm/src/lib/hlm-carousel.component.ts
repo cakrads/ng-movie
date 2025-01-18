@@ -34,7 +34,7 @@ import {
   template: `
     <div
       emblaCarousel
-      class="overflow-hidden"
+      class="shadow-2xl"
       [plugins]="plugins()"
       [options]="emblaOptions()"
       [subscribeToEvents]="['init', 'select', 'reInit']"
@@ -56,7 +56,7 @@ export class HlmCarouselComponent {
   public options: InputSignal<Omit<EmblaOptionsType, 'axis'> | undefined> =
     input();
   public plugins: InputSignal<EmblaPluginType[]> = input(
-    [] as EmblaPluginType[],
+    [] as EmblaPluginType[]
   );
 
   protected emblaOptions: Signal<EmblaOptionsType> = computed(() => ({

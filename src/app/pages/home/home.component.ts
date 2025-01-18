@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { ImageComponent } from '@components//image/image.component';
-import { hlmH1, hlmP } from '@components//ui/ui-typography-helm/src';
+import { hlmH1, hlmH3, hlmP } from '@components//ui/ui-typography-helm/src';
 import {
   TmdbService,
   ITrendingData,
@@ -14,7 +14,10 @@ import {
   HlmCarouselItemComponent,
   HlmCarouselNextComponent,
   HlmCarouselPreviousComponent,
+  HlmCarouselShadowABeforeComponent,
+  HlmCarouselShadowAfterComponent,
 } from '@app/shared/components/ui/ui-carousel-helm/src';
+import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
 
 @Component({
   selector: 'home-page',
@@ -28,6 +31,10 @@ import {
     HlmCarouselItemComponent,
     HlmCarouselNextComponent,
     HlmCarouselPreviousComponent,
+    HlmCarouselShadowABeforeComponent,
+    HlmCarouselShadowAfterComponent,
+
+    HlmSkeletonComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -36,8 +43,11 @@ import {
 export class HomePage {
   title = 'my-movie';
   hlmH1 = hlmH1;
+  hlmH3 = hlmH3;
   hlmP = hlmP;
+  maxData = 10;
 
+  loadingSkeleton = Array.from({ length: this.maxData }, (_, i) => i + 1);
   carouselItems = [
     { url: 'https://picsum.photos/500/400', alt: 'Mountain views' },
     { url: 'https://picsum.photos/500/400', alt: 'Forest' },
@@ -69,13 +79,16 @@ export class HomePage {
     //   page: 1,
     //   type: 'tv',
     // });
+    setTimeout(() => {
+      this.trendingMovies.loading = false;
+    }, 3000);
   }
 
   // getTrendingMovie(params: ITrendingParams): void {
   //   this.tmdbService.getTrending(params).subscribe({
   //     next: (response) => {
   //       this.trendingMovies.loading = false;
-  //       this.trendingMovies[params.type] = response.results.slice(0, 10);
+  //       this.trendingMovies[params.type] = response.results.slice(0, this.maxData);
   //     },
   //     error: () => {},
   //   });
