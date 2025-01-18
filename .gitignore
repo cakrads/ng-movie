@@ -29,9 +29,10 @@ yarn-error.log
 .history/*
 
 # env
+# https://medium.com/@lara.delrio333/deploy-an-angular-project-in-vercel-with-secret-environment-variables-74323925712d
 .env
-src/environments/environment.development.ts
 src/environments/environment.ts
+src/environments/environment.development.ts
 
 # Miscellaneous
 /.angular/cache
