@@ -1,17 +1,11 @@
-<div class="flex items-center justify-center w-full p-4">
-  <hlm-carousel class="w-full max-w-xs">
+<div class="w-full my-4">
+  <hlm-carousel class="w-full">
     <hlm-carousel-content>
-      @for (item of items; track item) {
-      <hlm-carousel-item>
-        <div class="p-1">
-          <section hlmCard>
-            <p hlmCardContent class="flex items-center justify-center p-6 aspect-square">
-              <span class="text-4xl font-semibold">{{ item }}</span>
-            </p>
-          </section>
-        </div>
-      </hlm-carousel-item>
-      }
+      <!-- @for (item of items; track item) { -->
+      <hlm-carousel-item> <div class="w-full">1</div> </hlm-carousel-item>
+      <hlm-carousel-item> 2 </hlm-carousel-item>
+      <hlm-carousel-item> 3 </hlm-carousel-item>
+      <!-- } -->
     </hlm-carousel-content>
     <button hlm-carousel-previous></button>
     <button hlm-carousel-next></button>

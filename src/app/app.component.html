@@ -1,15 +1,10 @@
-<div class="flex flex-col items-center py-5 ">
-  <h1 [class]="hlmH1">Spartan + Tailwind CSS in Angular!</h1>
-  <p [class]="hlmP">
-    Tailwind CSS successfully integrated.
-  </p>
-  <button hlmBtn>Button</button>
+<!--Desktop Navbar-->
+<!-- <app-navbar (changeColorTheme)="changeColorTheme($event)"></app-navbar> -->
 
-  <carousel [items]="carouselItems"></carousel>
+<!--Main Routing-->
+<main role="main" class="container border shadow-lg min-h-screen">
+  <router-outlet></router-outlet>
+</main>
 
-  <app-image ngSrc="https://picsum.photos/400/300" alt="Mountain views" [width]="400" [height]="300"
-    [aspectRatio]="4 / 3" [prioritize]="true"></app-image>
-
-</div>
-
-<router-outlet />
+<!-- Footer Component -->
+<!-- <app-footer></app-footer> -->

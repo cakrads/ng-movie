@@ -1,6 +1,15 @@
-<div class="overflow-hidden rounded-xl drop-shadow" [ngStyle]="{ height: height + 'px', width: width + 'px' }">
+<figure
+  [ngClass]="['overflow-hidden drop-shadow', customClass]"
+  [ngStyle]="{ height: height + 'px', width: width + 'px' }"
+>
   <div [hlmAspectRatio]="aspectRatio ? aspectRatio : null">
-    <img [ngSrc]="ngSrc" [alt]="alt" [width]="width" [height]="height" [priority]="prioritize"
-      class="transition-transform duration-300 ease-in-out hover:scale-105" />
+    <img
+      [ngSrc]="ngSrc"
+      [alt]="alt"
+      [width]="width"
+      [height]="height"
+      [priority]="prioritize"
+      class="transition-transform duration-300 ease-in-out hover:scale-110"
+    />
   </div>
-</div>
+</figure>

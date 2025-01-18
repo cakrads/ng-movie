@@ -1,0 +1,52 @@
+<div class="flex flex-col items-center py-5">
+  <h1 [class]="hlmH1">Spartan + Tailwind CSS in Angular!</h1>
+  <p [class]="hlmP">Tailwind CSS successfully integrated.</p>
+  <button hlmBtn>Button</button>
+
+  <!-- @if (trendingMovies.loading) {
+    <div>Loading...</div>
+  } @else {
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+    >
+      @for (movie of trendingMovies.movie; track movie) {
+        <p>{{ movie.title }}</p>
+        <p>{{ movie.backdrop_path }}</p>
+      } @empty {
+        Empty list
+      }
+    </div>
+  } -->
+
+  <div class="w-[calc(100%-50px)] my-4">
+    <hlm-carousel class="w-full" [options]="{ loop: true }">
+      <hlm-carousel-content>
+        <hlm-carousel-item
+          *ngFor="let content of carouselItems; trackBy: trackByFn"
+        >
+          <app-image
+            ngSrc="https://picsum.photos/300/169"
+            alt="Mountain views"
+            [width]="300"
+            [height]="169"
+            [aspectRatio]="16 / 9"
+            [prioritize]="true"
+            [customClass]="'rounded-lg'"
+          ></app-image>
+        </hlm-carousel-item>
+      </hlm-carousel-content>
+      <button hlm-carousel-previous></button>
+      <button hlm-carousel-next></button>
+    </hlm-carousel>
+  </div>
+
+  <app-image
+    ngSrc="https://picsum.photos/400/300"
+    alt="Mountain views"
+    [width]="400"
+    [height]="300"
+    [aspectRatio]="4 / 3"
+    [prioritize]="true"
+    [customClass]="'rounded-lg'"
+  ></app-image>
+</div>
