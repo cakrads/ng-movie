@@ -14,7 +14,7 @@ export class TmdbService {
   defaultParams: Record<string, any> = {};
 
   constructor(private readonly http: HttpClient) {
-    this.baseUrl = environment.apiUrl;
+    this.baseUrl = environment.tmdbUrl;
     this.defaultParams = {
       api_key: '',
       language: 'en-US',
@@ -26,7 +26,7 @@ export class TmdbService {
     return Object.entries(params)
       .map(
         ([key, value]) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`,
+          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
       )
       .join('&');
   }
