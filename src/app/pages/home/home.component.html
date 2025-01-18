@@ -2,24 +2,9 @@
   <h1 [class]="hlmH1">Spartan + Tailwind CSS in Angular!</h1>
   <p [class]="hlmP">Tailwind CSS successfully integrated.</p>
   <button hlmBtn>Button</button>
-
-  <!-- @if (trendingMovies.loading) {
-    <div>Loading...</div>
-  } @else {
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-    >
-      @for (movie of trendingMovies.movie; track movie) {
-        <p>{{ movie.title }}</p>
-        <p>{{ movie.backdrop_path }}</p>
-      } @empty {
-        Empty list
-      }
-    </div>
-  } -->
 </div>
 
-<hlm-tabs tab="today" class="w-full">
+<hlm-tabs id="trending" tab="today" class="w-full">
   <div class="flex flex-row gap-6 items-start">
     <h3 [ngClass]="[hlmH3]">Trending</h3>
     <div>
@@ -40,17 +25,46 @@
           </hlm-carousel-item>
           } @else {
           <hlm-carousel-item
-            *ngFor="let content of carouselItems; trackBy: trackByFn"
+            *ngFor="
+              let content of carouselItems;
+              index as i;
+              trackBy: trackByFn
+            "
           >
-            <app-image
-              ngSrc="https://picsum.photos/300/169"
-              alt="Mountain views"
-              [width]="300"
-              [height]="169"
-              [aspectRatio]="16 / 9"
-              [prioritize]="true"
-              [customClass]="'rounded-lg'"
-            ></app-image>
+            <brn-hover-card>
+              <app-image
+                brnHoverCardTrigger
+                ngSrc="https://picsum.photos/300/169"
+                alt="Mountain views"
+                [width]="300"
+                [height]="169"
+                [aspectRatio]="16 / 9"
+                [prioritize]="true"
+                [customClass]="'rounded-lg'"
+              ></app-image>
+              <hlm-hover-card-content *brnHoverCardContent class="w-80">
+                <div class="flex justify-between space-x-4">
+                  <div class="space-y-1">
+                    <h4 class="text-sm font-semibold">&#64;analogjs {{ i }}</h4>
+                    <p class="text-sm">
+                      The Angular meta-framework – build Angular applications
+                      faster.
+                    </p>
+                    <div class="flex items-center pt-2">
+                      <ng-icon
+                        hlm
+                        size="sm"
+                        name="lucideCalendar"
+                        class="mr-2 opacity-70"
+                      />
+                      <span class="text-xs text-muted-foreground"
+                        >Joined December 2021</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </hlm-hover-card-content>
+            </brn-hover-card>
           </hlm-carousel-item>
           }
         </hlm-carousel-content>

@@ -18,6 +18,8 @@ import {
   HlmCarouselShadowAfterComponent,
 } from '@app/shared/components/ui/ui-carousel-helm/src';
 import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
+import { BrnHoverCardModule } from '@spartan-ng/brain/hover-card';
+import { HlmHoverCardModule } from '@spartan-ng/ui-hovercard-helm';
 import {
   HlmTabsComponent,
   HlmTabsContentDirective,
@@ -46,6 +48,9 @@ import {
     HlmTabsContentDirective,
     HlmTabsListComponent,
     HlmTabsTriggerDirective,
+
+    BrnHoverCardModule,
+    HlmHoverCardModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
