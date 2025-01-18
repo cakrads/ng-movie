@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { ImageComponent } from '@components//image/image.component';
 import { hlmH1, hlmP } from '@components//ui/ui-typography-helm/src';
-import { TmdbService } from '@app/services/tmbd/tmdb.service';
-import { ITrendingData, ITrendingParams } from '@app/services/tmbd/tmbd.type';
+import {
+  TmdbService,
+  ITrendingData,
+  ITrendingParams,
+} from '@app/services/tmbd/tmdb.service';
 import {
   HlmCarouselComponent,
   HlmCarouselContentComponent,

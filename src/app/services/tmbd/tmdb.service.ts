@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ITrendingParams, ITrendingResponse } from './tmbd.type';
+import { environment } from '@environments/environment';
+
+export * from './tmbd.type';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +14,7 @@ export class TmdbService {
   defaultParams: Record<string, any> = {};
 
   constructor(private readonly http: HttpClient) {
-    this.baseUrl = 'https://api.themoviedb.org/3/';
+    this.baseUrl = environment.apiUrl;
     this.defaultParams = {
       api_key: '',
       language: 'en-US',

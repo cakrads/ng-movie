@@ -8,6 +8,7 @@
       "@shared/*": ["src/app/shared/*"],
       "@components/*": ["src/app/shared/components/*"],
       "@page/*": ["src/app/page/*"],
+      "@environments/*": ["src/environments/*"],
       "@spartan-ng/typography": [
         "src/app/shared/components/ui/typography/index.ts"
       ],
