@@ -19,6 +19,7 @@ import { ImageComponent } from '@components/ui/image/image.component';
   imports: [
     CommonModule,
     HlmTabsComponent,
+    HlmButtonDirective,
     HlmTabsContentDirective,
     HlmTabsListComponent,
     HlmTabsTriggerDirective,
