@@ -12,7 +12,5 @@ import { HeaderComponent } from '@components/fragment/header/header.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppComponent {
-  constructor() {
-    console.log('environment', environment);
-  }
+  constructor() {}
 }

@@ -1,5 +1,11 @@
-import { NgClass } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { isPlatformBrowser, NgClass } from '@angular/common';
+import {
+  Component,
+  HostListener,
+  Inject,
+  OnInit,
+  PLATFORM_ID,
+} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,17 +15,29 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   isScrolled = false;
+  isBrowser: boolean = false;
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) readonly platformId: Object) {}
 
   ngOnInit() {
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    this.isScrolled = scrollPosition > 50;
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    if (this.isBrowser) {
+      const scrollPosition =
+        window.scrollY || document.documentElement.scrollTop;
+      this.isScrolled = scrollPosition > 50;
+    }
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    this.isScrolled = scrollPosition > 50; // Change based on desired scroll offset
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    if (this.isBrowser) {
+      if (window) {
+        const scrollPosition =
+          window.scrollY || document.documentElement.scrollTop;
+        this.isScrolled = scrollPosition > 50; // Change based on desired scroll offset
+      }
+    }
   }
 }
