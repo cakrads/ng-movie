@@ -1,19 +1,22 @@
 <figure
-  [ngClass]="['overflow-hidden drop-shadow', customClass]"
-  [ngStyle]="{ height: height + 'px', width: width + 'px' }"
+  [ngClass]="figureClass()"
+  [ngStyle]="{
+    height: fill ? '100%' : height + 'px',
+    width: fill ? '100%' : width + 'px'
+  }"
 >
-  <div [hlmAspectRatio]="aspectRatio ? aspectRatio : null">
-    <img
-      [ngSrc]="ngSrc"
-      [alt]="alt"
-      [width]="width"
-      [height]="height"
-      [priority]="prioritize"
-      [ngClass]="[
-        zoom
-          ? 'transition-transform duration-500 ease-in-out transform hover:scale-110'
-          : ''
-      ]"
-    />
-  </div>
+  <img
+    [ngSrc]="ngSrc"
+    [alt]="alt"
+    [attr.width]="!fill ? width : null"
+    [attr.height]="!fill ? height : null"
+    [priority]="prioritize"
+    [ngClass]="[
+      fill ? 'object-cover' : '',
+      zoom
+        ? 'transition-transform duration-500 ease-in-out transform hover:scale-110'
+        : ''
+    ]"
+    [fill]="true"
+  />
 </figure>

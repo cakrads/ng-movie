@@ -18,15 +18,15 @@ import { ImageComponent } from '@components/ui/image/image.component';
   selector: 'home-page',
   imports: [
     CommonModule,
-    HlmButtonDirective,
     HlmTabsComponent,
     HlmTabsContentDirective,
     HlmTabsListComponent,
     HlmTabsTriggerDirective,
-    NgScrollbarModule,
     HlmScrollAreaDirective,
-    MovieCarouselComponent,
+    NgScrollbarModule,
     ImageComponent,
+
+    MovieCarouselComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

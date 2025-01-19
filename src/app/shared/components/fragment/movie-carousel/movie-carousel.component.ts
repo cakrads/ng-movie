@@ -63,7 +63,5 @@ export class MovieCarouselComponent {
   //   { url: 'https://picsum.photos/500/400', alt: 'Snowy Mountain' },
   // ];
 
-  constructor() {
-    console.log({ loading: this.loading, movieData: this.movieData });
-  }
+  constructor() {}
 }
