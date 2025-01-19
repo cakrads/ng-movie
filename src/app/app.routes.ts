@@ -10,10 +10,8 @@ export const routes: Routes = [
     //   import('./pages/home/home.component').then((m) => m.HomePage),
   },
   {
-    path: 'detail',
+    path: 'detail/:movieId',
     component: DetailPage,
-    // loadComponent: () =>
-    //   import('./pages/home/home.component').then((m) => m.HomePage),
   },
   // {
   //   path: '404',

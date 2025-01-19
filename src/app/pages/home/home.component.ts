@@ -11,7 +11,6 @@ import {
 } from '@spartan-ng/ui-tabs-helm';
 import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-import { HlmScrollAreaDirective } from '@app/shared/components/ui/ui-scrollarea-helm/src';
 import { ImageComponent } from '@components/ui/image/image.component';
 
 @Component({
@@ -25,7 +24,6 @@ import { ImageComponent } from '@components/ui/image/image.component';
     HlmTabsContentDirective,
     HlmTabsListComponent,
     HlmTabsTriggerDirective,
-    HlmScrollAreaDirective,
     NgScrollbarModule,
     ImageComponent,
 
@@ -39,10 +37,6 @@ export class HomePage {
   hlmP = hlmP;
   maxData = 10;
   ImagePath = '/assets/images/cover.jpg';
-
-  tags = Array.from({ length: 50 }).map(
-    (_, i, a) => `v1.2.0-beta.${a.length - i}`
-  );
 
   trackByFn(index: number): number {
     return index;
@@ -68,17 +62,7 @@ export class HomePage {
   constructor(readonly tmdbService: TmdbService) {}
 
   ngOnInit(): void {
-    this.getTrendingMovieDay().subscribe({
-      next: (response) => {
-        this.trendingMoviesDay = {
-          loading: false,
-          data: response.results.slice(0, this.maxData),
-        };
-        // get popular after trending day
-        this.getTPopularMovie();
-      },
-      error: () => {},
-    });
+    this.getTrendingMovieDay();
   }
 
   _handleTrendingWeek() {
@@ -94,11 +78,23 @@ export class HomePage {
   }
 
   getTrendingMovieDay() {
-    return this.tmdbService.getTrending({
-      page: 1,
-      period: 'day',
-      type: 'movie',
-    });
+    this.tmdbService
+      .getTrending({
+        page: 1,
+        period: 'day',
+        type: 'movie',
+      })
+      .subscribe({
+        next: (response) => {
+          this.trendingMoviesDay = {
+            loading: false,
+            data: response.results.slice(0, this.maxData),
+          };
+          // get popular after trending day
+          this.getTPopularMovie();
+        },
+        error: () => {},
+      });
   }
 
   getTrendingMovieWeek(): void {

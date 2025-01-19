@@ -2,7 +2,7 @@
   <div class="absolute w-full h-full">
     <app-image
       id="hero-image"
-      [ngSrc]="'/images/hero-image-xl.jpg'"
+      [ngSrc]="'/images/hero-image.jpg'"
       [alt]="'Angular & Tailwind + Spartan'"
       [prioritize]="true"
       [fill]="true"
@@ -25,7 +25,13 @@
     <p [ngClass]="'text-base px-5 md:text-xl mb-4'">
       The Movie App created with Angular and style with Tailwind + Sparntan
     </p>
-    <button hlmBtn>Button</button>
+    <a
+      href="https://github.com/cakrads/ng-movie"
+      target="_blank"
+      rel="noopener noreferrer"
+      hlmBtn
+      >Repository</a
+    >
   </div>
 </section>
 
@@ -94,13 +100,3 @@
     </div>
   </hlm-tabs>
 </section>
-
-<ng-scrollbar hlm class="w-full h-72 container">
-  <h4 class="mb-4 text-sm font-medium leading-none">Tags</h4>
-  <div class="flex flex-row gap-2">
-    <div class="text-sm" *ngFor="let tag of tags">
-      {{ tag }}
-      <div hlmSeparator class="my-2"></div>
-    </div>
-  </div>
-</ng-scrollbar>

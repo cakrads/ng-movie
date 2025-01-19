@@ -1,11 +1,16 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { hlmH3 } from '@components//ui/ui-typography-helm/src';
-import { IMovieListData } from '@app/services/tmbd/tmdb.service';
+import { IMovieListData, TmdbService } from '@app/services/tmbd/tmdb.service';
 
 import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
 
-import { data } from './data';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recommendation',
@@ -17,12 +22,27 @@ import { data } from './data';
 export class RecommendationComponent implements OnInit {
   hlmH3 = hlmH3;
 
-  movieRecommendationListLnoading = false;
+  route: ActivatedRoute = inject(ActivatedRoute);
+
+  movieRecommendationListLoading = true;
   movieRecommendationList: IMovieListData[] = [];
 
-  constructor() {}
+  constructor(readonly tmdbService: TmdbService) {}
 
   ngOnInit() {
-    this.movieRecommendationList = data;
+    this.route.params.subscribe((params) => {
+      this.movieRecommendationListLoading = true;
+      this.getMovieRecommandation(params['movieId']);
+    });
+  }
+
+  getMovieRecommandation(movieId: number) {
+    this.tmdbService.getRecommendation(movieId).subscribe({
+      next: (response) => {
+        this.movieRecommendationListLoading = false;
+        this.movieRecommendationList = response.results;
+      },
+      error: () => {},
+    });
   }
 }

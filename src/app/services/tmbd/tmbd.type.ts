@@ -101,4 +101,6 @@ interface IMovieDetailDataSpokenLanguage {
   iso_639_1: string;
   name: string;
 }
-export type IMovieDetailDataResponse = IResponseList<IMovieDetailData[]>;
+export type IMovieDetailResponse = IMovieDetailData;
+
+export type IMovieRecaommandationResponse = IResponseList<IMovieListData[]>;

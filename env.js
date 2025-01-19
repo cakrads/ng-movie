@@ -1,3 +1,4 @@
+// https://medium.com/@lara.delrio333/deploy-an-angular-project-in-vercel-with-secret-environment-variables-74323925712d
 const fs = require('fs');
 const path = require('path');
 const successColor = '\x1b[32m%s\x1b[0m';

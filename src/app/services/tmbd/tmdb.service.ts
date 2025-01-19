@@ -3,7 +3,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import {
+  IMovieDetailResponse,
   IMovieListData,
+  IMovieRecaommandationResponse,
   IPopularList,
   IPopularMovieResponse,
   IPopularParams,
@@ -107,5 +109,27 @@ export class TmdbService {
     });
 
     return this.http.get(`${this.baseUrl}${MOVIE_PATH}${urlParams}`);
+  }
+
+  getDetail(movieId: number): Observable<IMovieDetailResponse> {
+    const MOVIE_PATH = `movie/${movieId}`;
+    const urlParams = this.generateUrlParams({
+      ...this.defaultParams,
+    });
+    const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
+    console.info('hit API:', url);
+    return this.http.get<IMovieDetailResponse>(url);
+  }
+
+  getRecommendation(
+    movieId: number
+  ): Observable<IMovieRecaommandationResponse> {
+    const MOVIE_PATH = `movie/${movieId}/recommendations`;
+    const urlParams = this.generateUrlParams({
+      ...this.defaultParams,
+    });
+    const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
+    console.info('hit API:', url);
+    return this.http.get<IMovieRecaommandationResponse>(url);
   }
 }
