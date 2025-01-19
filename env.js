@@ -12,6 +12,12 @@ const envFile = `export const environment = {
   movieImage: '${process.env.TMDB_IMAGE_URL}',
 };
 `;
+
+const targetDir = path.join(__dirname, './src/environments');
+if (!fs.existsSync(targetDir)) {
+  fs.mkdirSync(targetDir, { recursive: true });
+}
+
 const targetPath = path.join(__dirname, './src/environments/environment.development.ts');
 fs.writeFile(targetPath, envFile, (err) => {
   if (err) {
@@ -28,6 +34,6 @@ fs.writeFile(targetPathProd, envFile, (err) => {
     console.error(err);
     throw err;
   } else {
-    console.log(successColor, `${checkSign} Successfully generated environment.development.ts`);
+    console.log(successColor, `${checkSign} Successfully generated environment.ts`);
   }
 });
