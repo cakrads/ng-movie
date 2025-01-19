@@ -29,80 +29,78 @@
   </div>
 </section>
 
-<div class="container overflow-hidden">
-  <section id="trending" class="mb-16">
-    <hlm-tabs tab="today" class="w-full">
-      <div
-        class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
-      >
-        <h3 [ngClass]="[hlmH3]">Trending</h3>
-        <div>
-          <hlm-tabs-list
-            class="w-full grid grid-cols-2"
-            aria-label="tabs trending"
-          >
-            <button hlmTabsTrigger="today">Today</button>
-            <button hlmTabsTrigger="week" (click)="_handleTrendingWeek()">
-              This Week
-            </button>
-          </hlm-tabs-list>
-        </div>
-      </div>
-      <div hlmTabsContent="today" class="min-h-[200px]">
-        <app-movie-carousel
-          [loading]="trendingMoviesDay.loading"
-          [movieData]="trendingMoviesDay.data"
-        ></app-movie-carousel>
-      </div>
-      <div hlmTabsContent="week" class="min-h-[200px]">
-        <app-movie-carousel
-          [loading]="trendingMoviesWeek.loading"
-          [movieData]="trendingMoviesWeek.data"
-        ></app-movie-carousel>
-      </div>
-    </hlm-tabs>
-  </section>
-
-  <section id="popular" class="mb-16">
-    <hlm-tabs tab="movie" class="w-full">
-      <div
-        class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
-      >
-        <h3 [ngClass]="[hlmH3]">What's Popular</h3>
-        <div>
-          <hlm-tabs-list
-            class="w-full grid grid-cols-2"
-            aria-label="tabs trending"
-          >
-            <button hlmTabsTrigger="movie">Movie</button>
-            <button hlmTabsTrigger="tv" (click)="_handlePopularTv()">
-              TV Show
-            </button>
-          </hlm-tabs-list>
-        </div>
-      </div>
-      <div hlmTabsContent="movie" class="min-h-[200px]">
-        <app-movie-carousel
-          [loading]="popularMovies.loading"
-          [movieData]="popularMovies.data"
-        ></app-movie-carousel>
-      </div>
-      <div hlmTabsContent="tv" class="min-h-[200px]">
-        <app-movie-carousel
-          [loading]="popularTv.loading"
-          [movieData]="popularTv.data"
-        ></app-movie-carousel>
-      </div>
-    </hlm-tabs>
-  </section>
-
-  <ng-scrollbar hlm class="w-full h-72">
-    <h4 class="mb-4 text-sm font-medium leading-none">Tags</h4>
-    <div class="flex flex-row gap-2">
-      <div class="text-sm" *ngFor="let tag of tags">
-        {{ tag }}
-        <div hlmSeparator class="my-2"></div>
+<section id="trending" class="mb-16 container overflow-hidden">
+  <hlm-tabs tab="today" class="w-full">
+    <div
+      class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
+    >
+      <h3 [ngClass]="[hlmH3]">Trending</h3>
+      <div>
+        <hlm-tabs-list
+          class="w-full grid grid-cols-2"
+          aria-label="tabs trending"
+        >
+          <button hlmTabsTrigger="today">Today</button>
+          <button hlmTabsTrigger="week" (click)="_handleTrendingWeek()">
+            This Week
+          </button>
+        </hlm-tabs-list>
       </div>
     </div>
-  </ng-scrollbar>
-</div>
+    <div hlmTabsContent="today" class="min-h-[200px]">
+      <app-movie-carousel
+        [loading]="trendingMoviesDay.loading"
+        [movieData]="trendingMoviesDay.data"
+      ></app-movie-carousel>
+    </div>
+    <div hlmTabsContent="week" class="min-h-[200px]">
+      <app-movie-carousel
+        [loading]="trendingMoviesWeek.loading"
+        [movieData]="trendingMoviesWeek.data"
+      ></app-movie-carousel>
+    </div>
+  </hlm-tabs>
+</section>
+
+<section id="popular" class="mb-16 container overflow-hidden">
+  <hlm-tabs tab="movie" class="w-full">
+    <div
+      class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
+    >
+      <h3 [ngClass]="[hlmH3]">What's Popular</h3>
+      <div>
+        <hlm-tabs-list
+          class="w-full grid grid-cols-2"
+          aria-label="tabs trending"
+        >
+          <button hlmTabsTrigger="movie">Movie</button>
+          <button hlmTabsTrigger="tv" (click)="_handlePopularTv()">
+            TV Show
+          </button>
+        </hlm-tabs-list>
+      </div>
+    </div>
+    <div hlmTabsContent="movie" class="min-h-[200px]">
+      <app-movie-carousel
+        [loading]="popularMovies.loading"
+        [movieData]="popularMovies.data"
+      ></app-movie-carousel>
+    </div>
+    <div hlmTabsContent="tv" class="min-h-[200px]">
+      <app-movie-carousel
+        [loading]="popularTv.loading"
+        [movieData]="popularTv.data"
+      ></app-movie-carousel>
+    </div>
+  </hlm-tabs>
+</section>
+
+<ng-scrollbar hlm class="w-full h-72 container">
+  <h4 class="mb-4 text-sm font-medium leading-none">Tags</h4>
+  <div class="flex flex-row gap-2">
+    <div class="text-sm" *ngFor="let tag of tags">
+      {{ tag }}
+      <div hlmSeparator class="my-2"></div>
+    </div>
+  </div>
+</ng-scrollbar>

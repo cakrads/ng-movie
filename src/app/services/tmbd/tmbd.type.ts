@@ -53,3 +53,52 @@ export interface IPopularParams {
 export type IPopularList = IResponseList<IMovieListData[]>;
 export type IPopularMovieResponse = IResponseList<IMovieListData[]>;
 export type IPopularTvResponse = IResponseList<ITvListData[]>;
+
+export interface IMovieDetailData {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: any;
+  budget: number;
+  genres: IMovieDetailDataGenre[];
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  origin_country: string[];
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: IMovieDetailDataProductionCompany[];
+  production_countries: IMovieDetailDataProductionCountry[];
+  release_date: string;
+  revenue: number;
+  runtime: number;
+  spoken_languages: IMovieDetailDataSpokenLanguage[];
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+interface IMovieDetailDataGenre {
+  id: number;
+  name: string;
+}
+interface IMovieDetailDataProductionCompany {
+  id: number;
+  logo_path?: string;
+  name: string;
+  origin_country: string;
+}
+interface IMovieDetailDataProductionCountry {
+  iso_3166_1: string;
+  name: string;
+}
+interface IMovieDetailDataSpokenLanguage {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+}
+export type IMovieDetailDataResponse = IResponseList<IMovieDetailData[]>;

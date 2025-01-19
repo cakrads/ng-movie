@@ -1,0 +1,7 @@
+<section id="Recommendation" class="container overflow-hidden mb-16">
+  <h3 [ngClass]="[hlmH3, 'mb-4']">Recommendation</h3>
+  <app-movie-carousel
+    [loading]="movieRecommendationListLnoading"
+    [movieData]="movieRecommendationList"
+  ></app-movie-carousel>
+</section>

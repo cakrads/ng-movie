@@ -16,6 +16,8 @@ import { ImageComponent } from '@components/ui/image/image.component';
 
 @Component({
   selector: 'home-page',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
   imports: [
     CommonModule,
     HlmTabsComponent,
@@ -29,8 +31,6 @@ import { ImageComponent } from '@components/ui/image/image.component';
 
     MovieCarouselComponent,
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePage {

@@ -48,7 +48,7 @@ import { environment } from '@environments/environment';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MovieCarouselComponent {
-  movieImage = environment.movieImage;
+  movieUrl = environment.movieImage;
   loadingSkeleton = Array.from({ length: 10 }, (_, i) => i + 1);
 
   @Input() loading: boolean = true;
