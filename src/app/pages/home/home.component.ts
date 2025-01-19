@@ -12,12 +12,12 @@ import {
 import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { HlmScrollAreaDirective } from '@app/shared/components/ui/ui-scrollarea-helm/src';
+import { ImageComponent } from '@components/ui/image/image.component';
 
 @Component({
   selector: 'home-page',
   imports: [
     CommonModule,
-
     HlmButtonDirective,
     HlmTabsComponent,
     HlmTabsContentDirective,
@@ -25,8 +25,8 @@ import { HlmScrollAreaDirective } from '@app/shared/components/ui/ui-scrollarea-
     HlmTabsTriggerDirective,
     NgScrollbarModule,
     HlmScrollAreaDirective,
-
     MovieCarouselComponent,
+    ImageComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -37,6 +37,7 @@ export class HomePage {
   hlmH3 = hlmH3;
   hlmP = hlmP;
   maxData = 10;
+  ImagePath = '/assets/images/cover.jpg';
 
   tags = Array.from({ length: 50 }).map(
     (_, i, a) => `v1.2.0-beta.${a.length - i}`

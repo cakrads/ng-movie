@@ -1,10 +1,27 @@
 <!--Desktop Navbar-->
-<!-- <app-navbar (changeColorTheme)="changeColorTheme($event)"></app-navbar> -->
+<nav class="sticky top-0 z-50 bg-slate-900 shadow-md">
+  <div class="container mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="font-extrabold text-2xl lg:text-2xl scroll-m-20 tracking-tight">
+      <a href="/">Ng-Movie</a>
+    </div>
+    <div>
+      <a href="#" class="text-sm font-bold p-4">Home</a>
+      <a href="#" class="text-sm font-bold p-4">Movies</a>
+      <a href="#" class="text-sm font-bold p-4">TV Shows</a>
+      <a href="#" class="text-sm font-bold p-4">People</a>
+    </div>
+  </div>
+</nav>
 
 <!--Main Routing-->
-<main role="main" class="container min-h-screen overflow-hidden">
+<main role="main" class="container min-h-screen overflow-hidden py-4">
   <router-outlet></router-outlet>
 </main>
 
-<!-- Footer Component -->
-<!-- <app-footer></app-footer> -->
+<footer class="bg-slate-900 text-white py-4">
+  <div class="container mx-auto px-6 text-center">
+    <div class="text-sm">
+      <p>&copy; 2025 Ng-Movie. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
