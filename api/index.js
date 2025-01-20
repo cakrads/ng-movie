@@ -1,1 +1,1 @@
-import('../dist/my-movie/server/server.mjs').then((server) => server.app);
+export default import('../dist/ng-movie/server/server.mjs').then(module => module.app);
