@@ -74,7 +74,7 @@
       class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
     >
       <h3 [ngClass]="[hlmH3]">What's Popular</h3>
-      <div>
+      <!-- <div>
         <hlm-tabs-list
           class="w-full grid grid-cols-2"
           aria-label="tabs trending"
@@ -84,7 +84,7 @@
             TV Show
           </button>
         </hlm-tabs-list>
-      </div>
+      </div> -->
     </div>
     <div hlmTabsContent="movie" class="min-h-[200px]">
       <app-movie-carousel
@@ -92,11 +92,11 @@
         [movieData]="popularMovies.data"
       ></app-movie-carousel>
     </div>
-    <div hlmTabsContent="tv" class="min-h-[200px]">
+    <!-- <div hlmTabsContent="tv" class="min-h-[200px]">
       <app-movie-carousel
         [loading]="popularTv.loading"
         [movieData]="popularTv.data"
       ></app-movie-carousel>
-    </div>
+    </div> -->
   </hlm-tabs>
 </section>

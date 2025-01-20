@@ -59,7 +59,7 @@ export class HomePage {
     data: [] as IMovieListData[],
   };
 
-  constructor(readonly tmdbService: TmdbService) {}
+  constructor(readonly tmdbService: TmdbService) { }
 
   ngOnInit(): void {
     this.getTrendingMovieDay();
@@ -71,11 +71,11 @@ export class HomePage {
     }
   }
 
-  _handlePopularTv() {
-    if (!this.popularTv.data.length) {
-      this.getTPopularTv();
-    }
-  }
+  // _handlePopularTv() {
+  //   if (!this.popularTv.data.length) {
+  //     this.getTPopularTv();
+  //   }
+  // }
 
   getTrendingMovieDay() {
     this.tmdbService
@@ -93,7 +93,7 @@ export class HomePage {
           // get popular after trending day
           this.getTPopularMovie();
         },
-        error: () => {},
+        error: () => { },
       });
   }
 
@@ -111,7 +111,7 @@ export class HomePage {
             data: response.results.slice(0, this.maxData),
           };
         },
-        error: () => {},
+        error: () => { },
       });
   }
 
@@ -127,23 +127,23 @@ export class HomePage {
             data: response.results.slice(0, this.maxData),
           };
         },
-        error: () => {},
+        error: () => { },
       });
   }
 
-  getTPopularTv(): void {
-    this.tmdbService
-      .getPopularTv({
-        page: 1,
-      })
-      .subscribe({
-        next: (response) => {
-          this.popularTv = {
-            loading: false,
-            data: response.results.slice(0, this.maxData),
-          };
-        },
-        error: () => {},
-      });
-  }
+  // getTPopularTv(): void {
+  //   this.tmdbService
+  //     .getPopularTv({
+  //       page: 1,
+  //     })
+  //     .subscribe({
+  //       next: (response) => {
+  //         this.popularTv = {
+  //           loading: false,
+  //           data: response.results.slice(0, this.maxData),
+  //         };
+  //       },
+  //       error: () => {},
+  //     });
+  // }
 }
