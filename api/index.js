@@ -1,0 +1,1 @@
+import('../dist/my-movie/server/server.mjs').then((server) => server.app);
