@@ -33,7 +33,7 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "my-movie": [
+      "ng-movie": [
         {
           "file": ".editorconfig",
           "hash": "8037249353422744134"

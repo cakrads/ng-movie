@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-movie": {
+    "ng-movie": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@ngx-env/builder:application",
           "options": {
-            "outputPath": "dist/my-movie",
+            "outputPath": "dist/ng-movie",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -70,10 +70,10 @@
           "builder": "@ngx-env/builder:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-movie:build:production"
+              "buildTarget": "ng-movie:build:production"
             },
             "development": {
-              "buildTarget": "my-movie:build:development"
+              "buildTarget": "ng-movie:build:development"
             }
           },
           "defaultConfiguration": "development",
