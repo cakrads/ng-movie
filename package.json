@@ -1,5 +1,5 @@
 {
-  "name": "my-movie",
+  "name": "ng-movie",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "build:ssr": "node -r dotenv/config env.js && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:my-movie": "node dist/my-movie/server/server.mjs",
+    "serve:ssr:ng-movie": "node dist/ng-movie/server/server.mjs",
     "vercel-build": "npm run build:ssr"
   },
   "private": true,
