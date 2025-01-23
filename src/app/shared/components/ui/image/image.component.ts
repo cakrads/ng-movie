@@ -26,6 +26,7 @@ export class ImageComponent {
   @Input() aspectRatio!: number; // Aspect ratio for the container (width / height)
   @Input() zoom: boolean = false; // Custom style for the container
   @Input() fill: boolean = false; // Custom style for the container
+  @Input() placeholder: boolean = true; // Custom style for the container
 
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   figureClass = computed(() =>
