@@ -81,3 +81,19 @@ For more information on using the Angular CLI, including detailed command refere
 ### Useful
 - https://dev.to/jdgamble555/the-state-of-angular-ssr-deployment-in-2024-17jb
 - https://dev.to/jdgamble555/how-to-deploy-angular-universal-to-vercel-31d0/comments
+
+
+## Feature and Next To Do
+[✅] enhance carousel layout shift
+[✅] Enhance image placeholder
+[] Update Readme
+   https://dev.to/krivanek06/angular-default-image-placeholder-3dfc
+   https://angular.dev/guide/image-optimization
+[] Add Video
+   click trailer, open dialog, hit API, play the video
+[] Show All genre in home
+[] Make sure how to deploy in vercel, take a notes
+[] Add Feature My Favorite
+   [] Add and Delete in Detail
+   [] List Favorite from Navbar
+[] Theme

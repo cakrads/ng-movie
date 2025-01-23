@@ -1,4 +1,4 @@
-<hlm-carousel class="w-full" [options]="{ loop: true }">
+<hlm-carousel class="w-full" [options]="{ loop: true, align: 'start' }">
   <hlm-carousel-content>
     @if (loading) {
     <hlm-carousel-item *ngFor="let skeleton of loadingSkeleton">

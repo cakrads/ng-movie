@@ -1,19 +1,19 @@
+/**
+ * https://angular.dev/guide/image-optimization
+ */
 import { Component, computed, input, Input } from '@angular/core';
 import {
   NgClass,
   NgOptimizedImage,
   NgStyle,
-  provideImgixLoader,
 } from '@angular/common';
 import { hlm } from '@spartan-ng/ui-core';
 import { ClassValue } from 'clsx';
+import { imagePlaceholder } from './image-placeholder';
 
 @Component({
   selector: 'app-image:not(p)',
   imports: [NgOptimizedImage, NgStyle, NgClass],
-  // providers: [
-  //   provideImgixLoader('https://my.base.url/') // Replace with your base Imgix URL
-  // ],
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
 })
@@ -26,10 +26,11 @@ export class ImageComponent {
   @Input() aspectRatio!: number; // Aspect ratio for the container (width / height)
   @Input() zoom: boolean = false; // Custom style for the container
   @Input() fill: boolean = false; // Custom style for the container
-  @Input() placeholder: boolean = true; // Custom style for the container
 
   public readonly userClass = input<ClassValue>('', { alias: 'class' });
   figureClass = computed(() =>
     hlm('relative', 'overflow-hidden', 'drop-shadow', this.userClass())
   );
+
+  imagePlaceholder = imagePlaceholder;
 }
