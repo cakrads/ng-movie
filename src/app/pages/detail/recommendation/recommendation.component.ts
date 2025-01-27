@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
-import { hlmH3 } from '@components//ui/ui-typography-helm/src';
+import { hlmH3 } from '@components/ui/ui-typography-helm/src';
 import { IMovieListData, TmdbService } from '@app/services/tmbd/tmdb.service';
 
 import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
@@ -27,7 +27,7 @@ export class RecommendationComponent implements OnInit {
   movieRecommendationListLoading = true;
   movieRecommendationList: IMovieListData[] = [];
 
-  constructor(readonly tmdbService: TmdbService) {}
+  constructor(readonly tmdbService: TmdbService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -42,7 +42,7 @@ export class RecommendationComponent implements OnInit {
         this.movieRecommendationListLoading = false;
         this.movieRecommendationList = response.results;
       },
-      error: () => {},
+      error: () => { },
     });
   }
 }

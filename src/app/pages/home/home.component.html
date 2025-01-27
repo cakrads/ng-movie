@@ -12,18 +12,18 @@
     class="absolute w-full h-full bg-gradient-to-b from-background/50 to-95% to-background"
   ></div>
   <div
-    class="absolute w-full h-full flex flex-col items-center justify-center gap-2 lg:gap-4 text-center"
+    class="absolute w-full h-full flex flex-col gap-2 lg:gap-4 items-center justify-center text-center"
   >
     <h1
       [ngClass]="[
         hlmH1,
-        'bg-gradient-to-r from-pink-600 to-purple-500 inline-block text-transparent bg-clip-text sm:!leading-[60px] lg:!leading-[65px]'
+        'bg-gradient-to-r from-primary to-purple-500 inline-block text-transparent bg-clip-text sm:!leading-[60px] lg:!leading-[65px]'
       ]"
     >
-      Angular & Tailwind + Sparntan
+      Angular & Tailwind + Spartan
     </h1>
     <p [ngClass]="'text-base px-5 md:text-xl mb-4'">
-      The Movie App created with Angular and style with Tailwind + Sparntan
+      The Movie App created with Angular and style with Tailwind + Spartan
     </p>
     <a
       href="https://github.com/cakrads/ng-movie"
@@ -69,34 +69,9 @@
 </section>
 
 <section id="popular" class="mb-16 container overflow-hidden">
-  <hlm-tabs tab="movie" class="w-full">
-    <div
-      class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
-    >
-      <h3 [ngClass]="[hlmH3]">What's Popular</h3>
-      <!-- <div>
-        <hlm-tabs-list
-          class="w-full grid grid-cols-2"
-          aria-label="tabs trending"
-        >
-          <button hlmTabsTrigger="movie">Movie</button>
-          <button hlmTabsTrigger="tv" (click)="_handlePopularTv()">
-            TV Show
-          </button>
-        </hlm-tabs-list>
-      </div> -->
-    </div>
-    <div hlmTabsContent="movie" class="min-h-[200px]">
-      <app-movie-carousel
-        [loading]="popularMovies.loading"
-        [movieData]="popularMovies.data"
-      ></app-movie-carousel>
-    </div>
-    <!-- <div hlmTabsContent="tv" class="min-h-[200px]">
-      <app-movie-carousel
-        [loading]="popularTv.loading"
-        [movieData]="popularTv.data"
-      ></app-movie-carousel>
-    </div> -->
-  </hlm-tabs>
+  <h3 [ngClass]="[hlmH3]">What's Popular</h3>
+  <app-movie-carousel
+    [loading]="popularMovies.loading"
+    [movieData]="popularMovies.data"
+  ></app-movie-carousel>
 </section>

@@ -6,7 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ImageComponent } from '@components/ui/image/image.component';
-import { hlmH1, hlmH4 } from '@components//ui/ui-typography-helm/src';
+import { hlmH1, hlmH4 } from '@components/ui/ui-typography-helm/src';
 import { IMovieDetailData } from '@app/services/tmbd/tmbd.type';
 import { environment } from '@environments/environment';
 import { RuntimePipe } from '@app/shared/pipes/runtime/runtime.pipe';
@@ -51,7 +51,7 @@ export class DetailPage implements OnInit {
   movieDetail: IMovieDetailData = {} as IMovieDetailData;
   backdropUrl = '';
 
-  constructor(readonly tmdbService: TmdbService) {}
+  constructor(readonly tmdbService: TmdbService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -71,7 +71,7 @@ export class DetailPage implements OnInit {
           'w1920_and_h800_multi_faces' +
           this.movieDetail.backdrop_path;
       },
-      error: () => {},
+      error: () => { },
     });
   }
 }

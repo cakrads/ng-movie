@@ -54,14 +54,5 @@ export class MovieCarouselComponent {
   @Input() loading: boolean = true;
   @Input() movieData!: IMovieListData[];
 
-  // carouselItems = [
-  //   { url: 'https://picsum.photos/500/400', alt: 'Mountain views' },
-  //   { url: 'https://picsum.photos/500/400', alt: 'Forest' },
-  //   { url: 'https://picsum.photos/500/400', alt: 'Beach' },
-  //   { url: 'https://picsum.photos/500/400', alt: 'Cityscape' },
-  //   { url: 'https://picsum.photos/500/400', alt: 'Desert' },
-  //   { url: 'https://picsum.photos/500/400', alt: 'Snowy Mountain' },
-  // ];
-
-  constructor() {}
+  constructor() { }
 }

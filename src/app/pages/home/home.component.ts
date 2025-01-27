@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-import { hlmH1, hlmH3, hlmP } from '@components//ui/ui-typography-helm/src';
+import { hlmH1, hlmH3, hlmP } from '@components/ui/ui-typography-helm/src';
 import { TmdbService, IMovieListData } from '@app/services/tmbd/tmdb.service';
 import {
   HlmTabsComponent,
@@ -71,12 +71,6 @@ export class HomePage {
     }
   }
 
-  // _handlePopularTv() {
-  //   if (!this.popularTv.data.length) {
-  //     this.getTPopularTv();
-  //   }
-  // }
-
   getTrendingMovieDay() {
     this.tmdbService
       .getTrending({
@@ -130,20 +124,4 @@ export class HomePage {
         error: () => { },
       });
   }
-
-  // getTPopularTv(): void {
-  //   this.tmdbService
-  //     .getPopularTv({
-  //       page: 1,
-  //     })
-  //     .subscribe({
-  //       next: (response) => {
-  //         this.popularTv = {
-  //           loading: false,
-  //           data: response.results.slice(0, this.maxData),
-  //         };
-  //       },
-  //       error: () => {},
-  //     });
-  // }
 }
