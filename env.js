@@ -10,6 +10,9 @@ const envFile = `export const environment = {
   tmdbUrl: '${process.env.TMDB_URL}',
   apiKey: '${process.env.API_KEY}',
   movieImage: '${process.env.TMDB_IMAGE_URL}',
+  movieMedia: '${process.env.TMDB_MEDIA_URL}',
+  movieVideoThumbnail: '${process.env.TMDB_VIDEO_THUMBNAIL_URL}',
+  movieVideoUrl: '${process.env.TMDB_VIDEO_URL}',
 };
 `;
 

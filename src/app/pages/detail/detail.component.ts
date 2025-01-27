@@ -18,6 +18,7 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
 import { ActivatedRoute } from '@angular/router';
 import { TmdbService } from '@app/services/tmbd/tmdb.service';
 import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
+import { DetailMediaComponent } from './detail-media/detail-media.component';
 
 @Component({
   selector: 'app-detail',
@@ -33,8 +34,8 @@ import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm
     RuntimePipe,
     HlmButtonDirective,
     HlmSkeletonComponent,
-
     RecommendationComponent,
+    DetailMediaComponent
   ],
   providers: [provideIcons({ lucideStar, lucidePlay })],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -46,6 +47,7 @@ export class DetailPage implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
 
   movieUrl = environment.movieImage;
+  videoUrl = environment.movieVideoUrl;
 
   movieDetailLoading = true;
   movieDetail: IMovieDetailData = {} as IMovieDetailData;
@@ -57,8 +59,12 @@ export class DetailPage implements OnInit {
     this.route.params.subscribe((params) => {
       this.movieDetailLoading = true;
       this.backdropUrl = '';
-      this.getMovieDetail(params['movieId']);
+
+      const movieId = +params['movieId'];
+      this.getMovieDetail(movieId);
     });
+    console.log('videoUrl', this.videoUrl);
+
   }
 
   getMovieDetail(movieId: number) {

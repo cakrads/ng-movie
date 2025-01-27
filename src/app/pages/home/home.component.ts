@@ -10,7 +10,6 @@ import {
   HlmTabsTriggerDirective,
 } from '@spartan-ng/ui-tabs-helm';
 import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
-import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ImageComponent } from '@components/ui/image/image.component';
 
 @Component({
@@ -24,7 +23,6 @@ import { ImageComponent } from '@components/ui/image/image.component';
     HlmTabsContentDirective,
     HlmTabsListComponent,
     HlmTabsTriggerDirective,
-    NgScrollbarModule,
     ImageComponent,
 
     MovieCarouselComponent,

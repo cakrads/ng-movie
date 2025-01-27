@@ -5,6 +5,7 @@ export interface IResponseList<T> {
   total_results: number;
 }
 
+
 export interface IMovieListData {
   backdrop_path: string;
   id: number;
@@ -40,6 +41,7 @@ export interface ITvListData {
   vote_count: number;
 }
 
+
 export interface ITrendingParams {
   page: number;
   period: 'day' | 'week';
@@ -47,12 +49,46 @@ export interface ITrendingParams {
 }
 export type ITrendingResponse = IResponseList<IMovieListData[]>;
 
+
 export interface IPopularParams {
   page: number;
 }
 export type IPopularList = IResponseList<IMovieListData[]>;
 export type IPopularMovieResponse = IResponseList<IMovieListData[]>;
 export type IPopularTvResponse = IResponseList<ITvListData[]>;
+export type IMovieRecommandationResponse = IResponseList<IMovieListData[]>;
+
+
+export interface IMovieVideoData {
+  iso_639_1: string
+  iso_3166_1: string
+  name: string
+  key: string
+  site: string
+  size: number
+  type: string
+  official: boolean
+  published_at: string
+  id: string
+}
+export type IMovieVideoResponse = IResponseList<IMovieVideoData[]>;
+
+export interface IMovieImageData {
+  aspect_ratio: number
+  height: number
+  iso_639_1: any
+  file_path: string
+  vote_average: number
+  vote_count: number
+  width: number
+}
+export interface IMovieImagesData {
+  id: number
+  backdrops: IMovieImageData[]
+  logos: IMovieImageData[]
+  posters: IMovieImageData[]
+};
+export type IMovieImagesResponse = IMovieImagesData;
 
 export interface IMovieDetailData {
   adult: boolean;
@@ -81,6 +117,8 @@ export interface IMovieDetailData {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  videos?: IMovieVideoResponse;
+  images?: IMovieImagesResponse;
 }
 interface IMovieDetailDataGenre {
   id: number;
@@ -102,5 +140,3 @@ interface IMovieDetailDataSpokenLanguage {
   name: string;
 }
 export type IMovieDetailResponse = IMovieDetailData;
-
-export type IMovieRecaommandationResponse = IResponseList<IMovieListData[]>;

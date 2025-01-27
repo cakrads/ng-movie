@@ -1,0 +1,98 @@
+<section id="movie-detail-media" class="mb-16 container overflow-hidden">
+  <hlm-tabs tab="posters" class="w-full">
+    <div
+      class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
+    >
+      <h3 [ngClass]="[hlmH4]">Media</h3>
+      <div>
+        <hlm-tabs-list
+          class="w-full flex flex-row"
+          aria-label="tabs movie-detail-media"
+        >
+          <button hlmTabsTrigger="posters">Posters</button>
+          <button hlmTabsTrigger="backdrops">Backdrops</button>
+          <button hlmTabsTrigger="videos">Videos</button>
+        </hlm-tabs-list>
+      </div>
+    </div>
+    <div hlmTabsContent="posters" class="min-h-[320px]">
+      <hlm-scroll-area>
+        @if (loading) {
+        <ng-container *ngFor="let skeleton of loadingSkeleton">
+          <hlm-skeleton class="w-[200px] h-[300px] rounded-lg" />
+        </ng-container>
+        } @else if (!!images && images.posters.length > 0) {
+        <ng-container *ngFor="let image of images.posters | slice : 0 : 10">
+          <app-image
+            class="rounded-lg hover:cursor-pointer"
+            [ngSrc]="mediaInfo.imagePosterUrl(image.file_path)"
+            [alt]="'poster' + movieTitle"
+            [width]="200"
+            [height]="300"
+            [zoom]="true"
+          ></app-image>
+        </ng-container>
+        }
+      </hlm-scroll-area>
+    </div>
+    <div hlmTabsContent="backdrops" class="min-h-[320px]">
+      <hlm-scroll-area>
+        @if (loading) {
+        <ng-container *ngFor="let skeleton of loadingSkeleton">
+          <hlm-skeleton class="w-[533px] h-[300px] rounded-lg" />
+        </ng-container>
+        } @else if (!!images && images.backdrops.length > 0) {
+        <ng-container *ngFor="let image of images.backdrops | slice : 0 : 10">
+          <app-image
+            class="rounded-lg hover:cursor-pointer"
+            [ngSrc]="mediaInfo.imageBackdropUrl(image.file_path)"
+            [alt]="'backdrop' + movieTitle"
+            [width]="533"
+            [height]="300"
+            [zoom]="true"
+          ></app-image>
+        </ng-container>
+        }
+      </hlm-scroll-area>
+    </div>
+    <div hlmTabsContent="videos" class="min-h-[320px]">
+      <hlm-scroll-area>
+        @if (loading) {
+        <ng-container *ngFor="let skeleton of loadingSkeleton">
+          <hlm-skeleton class="w-[533px] h-[300px] rounded-lg" />
+        </ng-container>
+        } @else if (!!videos && videos.results.length > 0) {
+        <ng-container *ngFor="let video of videos.results | slice : 0 : 10">
+          <a
+            class="group hover:cursor-pointer relative w-[533px] h-[300px] overflow-hidden"
+            [href]="mediaInfo.videoUrl(video.key)"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <app-image
+              class="rounded-lg transform transition-transform duration-500 ease-in-out group-hover:scale-110"
+              [ngSrc]="mediaInfo.thumbnail(video.key)"
+              [alt]="'thumbnail' + movieTitle"
+              [fill]="true"
+            ></app-image>
+            <div
+              [ngClass]="[
+                'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-11 w-11',
+                'rounded-full bg-background/75 flex items-center justify-center',
+                'group-hover:scale-110  transition-transform duration-500 ease-in-out'
+              ]"
+            >
+              <ng-icon
+                class="text-primary-foreground"
+                hlm
+                name="lucidePlay"
+                size="sm"
+              />
+            </div>
+          </a>
+        </ng-container>
+        }
+      </hlm-scroll-area>
+    </div>
+  </hlm-tabs>
+</section>

@@ -49,9 +49,12 @@
         class="flex flex-row sm:flex-col md:flex-row gap-4 sm:gap-6 md:gap-4 mb-6"
       >
         <div>
-          <button
+          <a
             hlmBtn
             class="rounded-full flex flex-row gap-2 font-medium px-4"
+            href="{{ videoUrl + movieDetail.videos?.results?.[0]?.key }}"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <ng-icon
               class="text-primary-foreground"
@@ -60,7 +63,7 @@
               size="sm"
             />
             Play Trailer
-          </button>
+          </a>
         </div>
         <div class="flex flex-row gap-2 items-center">
           <span class="text-yellow-500 text-xl font-medium"> SCORE </span>
@@ -96,6 +99,13 @@
   </div>
 </section>
 
-@defer {
+<app-detail-media
+  [loading]="movieDetailLoading"
+  [movieTitle]="movieDetail.title"
+  [images]="movieDetail.images!"
+  [videos]="movieDetail.videos!"
+></app-detail-media>
+
+@defer{
 <app-recommendation></app-recommendation>
 } }

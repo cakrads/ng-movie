@@ -82,18 +82,59 @@ For more information on using the Angular CLI, including detailed command refere
 - https://dev.to/jdgamble555/the-state-of-angular-ssr-deployment-in-2024-17jb
 - https://dev.to/jdgamble555/how-to-deploy-angular-universal-to-vercel-31d0/comments
 
+## Feature as Tech View
+- Angular: Core Framework
+- TMDB : Movie DB using 
+- Tailwind: Styling
+- Spartan: Headless Component
+- Use Light and Dark
+- NgRx: ????
+- Multi Languange
+- Vercel: Deploy
+- env: generate app/environments/environtment.ts fron .env when run dev and run build
 
-## Feature and Next To Do
+## Feature as Tech View
+Home Page
+   [✅] Trending Today
+   [✅] Trending Week
+   [✅] Popular
+   [] List Movies by Genre 
+   [] Search
+Detail Page
+   [✅] Movie Detail
+   [✅] Movie Recommandation
+   [] Video Trailer
+   [] Favorite
+Favorites Page
+   [] List Favorite Movie
+   [] 
+[] List Movie
+   [] List Movie
+   [] Search
+   [] Filter
+Other
+   [] Theme 
+
+
+## Next To Dev or Enhance
 [✅] enhance carousel layout shift
 [✅] Enhance image placeholder
-[] Update Readme
-   https://dev.to/krivanek06/angular-default-image-placeholder-3dfc
-   https://angular.dev/guide/image-optimization
+[✅] Blip in Home Page, not happend in Detail page
+      only happen in local
+[] Add page 404
+[] add eslint
+   [] global
+   [] delete unused import
+[] enhnace styling, use space-x-2 not flex gap-2
 [] Add Video
    click trailer, open dialog, hit API, play the video
 [] Show All genre in home
-[] Make sure how to deploy in vercel, take a notes
 [] Add Feature My Favorite
    [] Add and Delete in Detail
    [] List Favorite from Navbar
 [] Theme
+[] international i9
+[] Update Readme
+   https://dev.to/krivanek06/angular-default-image-placeholder-3dfc
+   https://angular.dev/guide/image-optimization
+[] Make sure how to deploy in vercel, take a notes
