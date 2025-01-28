@@ -103,6 +103,7 @@ Home Page
 Detail Page
    [✅] Movie Detail
    [✅] Movie Recommandation
+   [✅] Movie Media - Posters, Backdrops, and Videos 
    [] Video Trailer
    [] Favorite
 Favorites Page
