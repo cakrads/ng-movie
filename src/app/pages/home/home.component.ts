@@ -52,7 +52,7 @@ export class HomePage {
     loading: true,
     data: [] as IMovieListData[],
   };
-  popularTv = {
+  nowPlayingMovies = {
     loading: true,
     data: [] as IMovieListData[],
   };
@@ -84,6 +84,7 @@ export class HomePage {
           };
           // get popular after trending day
           this.getTPopularMovie();
+          this.getNowPlayingMovie();
         },
         error: () => { },
       });
@@ -115,6 +116,22 @@ export class HomePage {
       .subscribe({
         next: (response) => {
           this.popularMovies = {
+            loading: false,
+            data: response.results.slice(0, this.maxData),
+          };
+        },
+        error: () => { },
+      });
+  }
+
+  getNowPlayingMovie(): void {
+    this.tmdbService
+      .getNowPlaying({
+        page: 1,
+      })
+      .subscribe({
+        next: (response) => {
+          this.nowPlayingMovies = {
             loading: false,
             data: response.results.slice(0, this.maxData),
           };

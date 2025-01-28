@@ -35,7 +35,7 @@
   </div>
 </section>
 
-<section id="trending" class="mb-16 container overflow-hidden">
+<section id="home-trending" class="mb-16 container overflow-hidden">
   <hlm-tabs tab="today" class="w-full">
     <div
       class="flex flex-row gap-6 items-center md:items-start justify-between md:justify-start mb-4"
@@ -68,10 +68,18 @@
   </hlm-tabs>
 </section>
 
-<section id="popular" class="mb-16 container overflow-hidden">
+<section id="home-popular" class="mb-16 container overflow-hidden">
   <h3 [ngClass]="[hlmH3, 'mb-4']">What's Popular</h3>
   <app-movie-carousel
     [loading]="popularMovies.loading"
     [movieData]="popularMovies.data"
+  ></app-movie-carousel>
+</section>
+
+<section id="home-popular" class="mb-16 container overflow-hidden">
+  <h3 [ngClass]="[hlmH3, 'mb-4']">Now Playing</h3>
+  <app-movie-carousel
+    [loading]="nowPlayingMovies.loading"
+    [movieData]="nowPlayingMovies.data"
   ></app-movie-carousel>
 </section>

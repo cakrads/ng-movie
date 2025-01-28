@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import {
   IMovieDetailResponse,
   IMovieImagesData,
-  IMovieListData,
   IMovieRecommandationResponse,
   IMovieVideoResponse,
-  IPopularList,
+  INowPlayingMovieResponse,
   IPopularMovieResponse,
   IPopularParams,
-  IPopularTvResponse,
   ITrendingParams,
   ITrendingResponse,
 } from './tmbd.type';
@@ -44,7 +41,7 @@ export class TmdbService {
   }
 
   getTrending(trendingParams: ITrendingParams): Observable<ITrendingResponse> {
-    const moviePath = `trending/${trendingParams.type}/${trendingParams.period}`;
+    const moviePath = `trending/movie/${trendingParams.period}`;
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
       page: trendingParams.page || 1,
@@ -54,7 +51,7 @@ export class TmdbService {
     return this.http.get<ITrendingResponse>(url);
   }
 
-  getPopularMovie(popularParams: IPopularParams): Observable<IPopularList> {
+  getPopularMovie(popularParams: IPopularParams): Observable<IPopularMovieResponse> {
     const moviePath = `movie/popular`;
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
@@ -65,50 +62,16 @@ export class TmdbService {
     return this.http.get<IPopularMovieResponse>(url);
   }
 
-  // getPopularTv(popularParams: IPopularParams): Observable<IPopularList> {
-  //   const moviePath = `tv/popular`;
-  //   console.log({ moviePath });
-  //   const urlParams = this.generateUrlParams({
-  //     ...this.defaultParams,
-  //     page: popularParams.page || 1,
-  //   });
-  //   const url = `${this.baseUrl}${moviePath}?${urlParams}`;
-  //   console.info('TMDB getVideos', url);
-  //   return this.http.get<IPopularTvResponse>(url).pipe(
-  //     map((response: IPopularTvResponse) => ({
-  //       ...response,
-  //       results: response.results.map(
-  //         (tv): IMovieListData => ({
-  //           backdrop_path: tv.backdrop_path,
-  //           id: tv.id,
-  //           title: tv.name, // TV name becomes the movie title
-  //           original_title: tv.original_name, // TV original name becomes the movie original title
-  //           overview: tv.overview,
-  //           poster_path: tv.poster_path,
-  //           media_type: 'tv', // Specify that this is TV content
-  //           adult: tv.adult,
-  //           original_language: tv.original_language,
-  //           genre_ids: tv.genre_ids,
-  //           popularity: tv.popularity,
-  //           release_date: tv.first_air_date, // TV first air date becomes movie release date
-  //           video: false, // Default to false as video doesn't apply here
-  //           vote_average: tv.vote_average,
-  //           vote_count: tv.vote_count,
-  //         })
-  //       ),
-  //     }))
-  //   );
-  // }
-
-  // getNowPlaying(page: number): Observable<any> {
-  //   const MOVIE_PATH = '/movie/now_playing';
-  //   const urlParams = this.generateUrlParams({
-  //     ...this.defaultParams,
-  //     page,
-  //   });
-
-  //   return this.http.get(`${this.baseUrl}${MOVIE_PATH}${urlParams}`);
-  // }
+  getNowPlaying(nowPlayingParams: IPopularParams): Observable<INowPlayingMovieResponse> {
+    const moviePath = 'movie/now_playing';
+    const urlParams = this.generateUrlParams({
+      ...this.defaultParams,
+      ...nowPlayingParams,
+    });
+    const url = `${this.baseUrl}${moviePath}?${urlParams}`;
+    console.info('TMDB getNowPlaying', url);
+    return this.http.get<INowPlayingMovieResponse>(url);
+  }
 
   getDetail(movieId: number): Observable<IMovieDetailResponse> {
     const MOVIE_PATH = `movie/${movieId}`;

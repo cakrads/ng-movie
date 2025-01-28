@@ -45,7 +45,7 @@ export interface ITvListData {
 export interface ITrendingParams {
   page: number;
   period: 'day' | 'week';
-  type: 'movie' | 'tv';
+  type: 'movie';
 }
 export type ITrendingResponse = IResponseList<IMovieListData[]>;
 
@@ -53,9 +53,14 @@ export type ITrendingResponse = IResponseList<IMovieListData[]>;
 export interface IPopularParams {
   page: number;
 }
-export type IPopularList = IResponseList<IMovieListData[]>;
 export type IPopularMovieResponse = IResponseList<IMovieListData[]>;
-export type IPopularTvResponse = IResponseList<ITvListData[]>;
+
+export interface INowPlayingParams {
+  page: number;
+}
+export type INowPlayingMovieResponse = IResponseList<IMovieListData[]>;
+
+
 export type IMovieRecommandationResponse = IResponseList<IMovieListData[]>;
 
 
