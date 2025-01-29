@@ -1,0 +1,10 @@
+@for (genre of genres; track genre) {
+<section [id]="genre.name" class="mb-16 container overflow-hidden">
+  <h3 [ngClass]="[hlmH3, 'mb-4']">{{ genre.name }} Movies</h3>
+  <app-movie-carousel
+    [id]="'movie-carousel-' + genre.name"
+    [loading]="moviesByGenresData[genre.id].loading"
+    [movieData]="moviesByGenresData[genre.id].movies"
+  ></app-movie-carousel>
+</section>
+}

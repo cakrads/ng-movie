@@ -11,6 +11,7 @@ import {
 } from '@spartan-ng/ui-tabs-helm';
 import { MovieCarouselComponent } from '@components/fragment/movie-carousel/movie-carousel.component';
 import { ImageComponent } from '@components/ui/image/image.component';
+import { MoviesByGenreComponent } from './movies-by-genre/movies-by-genre.component';
 
 @Component({
   selector: 'home-page',
@@ -26,6 +27,7 @@ import { ImageComponent } from '@components/ui/image/image.component';
     ImageComponent,
 
     MovieCarouselComponent,
+    MoviesByGenreComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -82,12 +84,16 @@ export class HomePage {
             loading: false,
             data: response.results.slice(0, this.maxData),
           };
-          // get popular after trending day
-          this.getTPopularMovie();
-          this.getNowPlayingMovie();
+          // this method will focus to trending after that fetch another data
+          this.afterGetTrendingMovieDay();
         },
         error: () => { },
       });
+  }
+
+  afterGetTrendingMovieDay() {
+    this.getTPopularMovie();
+    this.getNowPlayingMovie();
   }
 
   getTrendingMovieWeek(): void {

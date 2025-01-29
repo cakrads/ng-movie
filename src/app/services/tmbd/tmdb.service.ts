@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {
+  IDiscoverMovieResponse,
+  IDiscoverParams,
+  IGenreListParams,
+  IGenreListResponse,
   IMovieDetailResponse,
   IMovieImagesData,
   IMovieRecommandationResponse,
@@ -45,7 +49,8 @@ export class TmdbService {
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
       page: trendingParams.page || 1,
-    });
+    } as ITrendingParams);
+
     const url = `${this.baseUrl}${moviePath}?${urlParams}`;
     console.info('TMDB getTrending', url);
     return this.http.get<ITrendingResponse>(url);
@@ -55,8 +60,9 @@ export class TmdbService {
     const moviePath = `movie/popular`;
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
-      page: popularParams.page || 1,
+      page: popularParams.page ?? 1,
     });
+
     const url = `${this.baseUrl}${moviePath}?${urlParams}`;
     console.info('TMDB getPopularMovie', url);
     return this.http.get<IPopularMovieResponse>(url);
@@ -67,7 +73,8 @@ export class TmdbService {
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
       ...nowPlayingParams,
-    });
+    } as IPopularParams);
+
     const url = `${this.baseUrl}${moviePath}?${urlParams}`;
     console.info('TMDB getNowPlaying', url);
     return this.http.get<INowPlayingMovieResponse>(url);
@@ -79,6 +86,7 @@ export class TmdbService {
       ...this.defaultParams,
       append_to_response: 'videos,images',
     });
+
     const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
     console.info('TMDB getDetail', url);
     return this.http.get<IMovieDetailResponse>(url);
@@ -91,6 +99,7 @@ export class TmdbService {
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
     });
+
     const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
     console.info('TMDB getRecommendation:', url);
     return this.http.get<IMovieRecommandationResponse>(url);
@@ -101,6 +110,7 @@ export class TmdbService {
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
     });
+
     const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
     console.info('TMDB getVideos:', url);
     return this.http.get<IMovieVideoResponse>(url);
@@ -111,8 +121,36 @@ export class TmdbService {
     const urlParams = this.generateUrlParams({
       ...this.defaultParams,
     });
+
     const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
     console.info('TMDB getImages:', url);
     return this.http.get<IMovieImagesData>(url);
   }
+
+  getGenreList(params?: IGenreListParams): Observable<IGenreListResponse> {
+    const path = `genre/movie/list`;
+    const defaultLanguage = 'en';
+    const urlParams = this.generateUrlParams({
+      ...this.defaultParams,
+      language: params?.language ?? defaultLanguage,
+    } as IGenreListParams);
+
+    const url = `${this.baseUrl}${path}?${urlParams}`;
+    console.info('TMDB getGenreList:', url);
+    return this.http.get<IGenreListResponse>(url)
+  }
+
+  // Fetch movies by genre
+  getDiscoverMovies(params: IDiscoverParams): Observable<IDiscoverMovieResponse> {
+    const path = `discover/movie`;
+    const urlParams = this.generateUrlParams({
+      ...this.defaultParams,
+      with_genres: params.with_genres,
+    } as IDiscoverParams);
+
+    const url = `${this.baseUrl}${path}?${urlParams}`;
+    console.info('TMDB getDiscoverMovies:', url);
+    return this.http.get<IDiscoverMovieResponse>(url);
+  }
+
 }

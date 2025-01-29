@@ -5,6 +5,15 @@ export interface IResponseList<T> {
   total_results: number;
 }
 
+export type ListSortBy = 'popularity.asc' | 'popularity.desc' | 'release_date.asc' | 'release_date.desc' | 'revenue.asc' | 'revenue.desc' | 'primary_release_date.asc' | 'primary_release_date.desc' | 'original_title.asc' | 'original_title.desc' | 'vote_average.asc' | 'vote_average.desc' | 'vote_count.asc' | 'vote_count.desc';
+
+export interface IParamsList {
+  include_adult?: boolean;
+  page?: number;
+  query?: string;
+  sort_by?: ListSortBy;
+  with_genres?: number;
+}
 
 export interface IMovieListData {
   backdrop_path: string;
@@ -24,42 +33,22 @@ export interface IMovieListData {
   vote_count: number;
 }
 
-export interface ITvListData {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  origin_country: string[];
-  original_language: string;
-  original_name: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  first_air_date: string;
-  name: string;
-  vote_average: number;
-  vote_count: number;
-}
 
-
-export interface ITrendingParams {
-  page: number;
+export interface ITrendingParams extends IParamsList {
   period: 'day' | 'week';
   type: 'movie';
 }
 export type ITrendingResponse = IResponseList<IMovieListData[]>;
 
 
-export interface IPopularParams {
-  page: number;
-}
+export interface IPopularParams extends IParamsList { }
 export type IPopularMovieResponse = IResponseList<IMovieListData[]>;
 
-export interface INowPlayingParams {
-  page: number;
-}
+export interface INowPlayingParams extends IParamsList { }
 export type INowPlayingMovieResponse = IResponseList<IMovieListData[]>;
 
+export interface IDiscoverParams extends IParamsList { }
+export type IDiscoverMovieResponse = IResponseList<IMovieListData[]>;
 
 export type IMovieRecommandationResponse = IResponseList<IMovieListData[]>;
 
@@ -145,3 +134,15 @@ interface IMovieDetailDataSpokenLanguage {
   name: string;
 }
 export type IMovieDetailResponse = IMovieDetailData;
+
+
+export interface IGenreListParams {
+  language: string;
+}
+export interface IGenreData {
+  id: number
+  name: string
+}
+export type IGenreListResponse = {
+  genres: IGenreData[]
+};
