@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { ImageComponent } from '@app/shared/components/ui/image/image.component';
 import { IMovieListData } from '@app/services/tmbd/tmdb.service';
-import { lucideStar } from '@ng-icons/lucide';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { HlmIconDirective } from '@spartan-ng/ui-icon-helm';
 import {
   HlmCarouselComponent,
   HlmCarouselContentComponent,
@@ -19,14 +16,14 @@ import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm
 import { BrnHoverCardModule } from '@spartan-ng/brain/hover-card';
 import { HlmHoverCardModule } from '@spartan-ng/ui-hovercard-helm';
 import { environment } from '@environments/environment';
+import { MovieCardComponent } from '../movie-card/movie-card.component';
 
 @Component({
   selector: 'app-movie-carousel',
   imports: [
     CommonModule,
-    NgIcon,
 
-    HlmIconDirective,
+    MovieCardComponent,
     HlmSkeletonComponent,
     HlmButtonDirective,
     ImageComponent,
@@ -42,7 +39,6 @@ import { environment } from '@environments/environment';
     BrnHoverCardModule,
     HlmHoverCardModule,
   ],
-  providers: [provideIcons({ lucideStar })],
   templateUrl: './movie-carousel.component.html',
   styleUrls: ['./movie-carousel.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,0 +1,56 @@
+<div
+  [ngClass]="[
+    'flex !rounded-lg !shadow-lg !shadow-secondary overflow-hidden h-full min-h-[250px]',
+    variant === 'vertical' ? 'flex-col' : 'flex-row'
+  ]"
+>
+  <div
+    [ngClass]="[
+      'flex-none',
+      variant === 'vertical' ? 'w-full h-[150px]' : 'w-[162px] h-full'
+    ]"
+  >
+    <app-image
+      [ngSrc]="
+        variant === 'vertical'
+          ? movieUrl + 'w355_and_h200_face' + movie.backdrop_path
+          : movieUrl + 'w220_and_h330_bestv2' + movie.poster_path
+      "
+      [alt]="'ng-movie' + movie.title"
+      [fill]="true"
+      [zoom]="true"
+    ></app-image>
+  </div>
+  <div class="p-4 space-y-2">
+    <a
+      href="/movie/{{ movie.id }}"
+      class="hover:text-red-500 hover:cursor-pointer font-bold md:text-xl line-clamp-2"
+    >
+      {{ movie.title }}
+    </a>
+    <span class="text-slate-400 font-semibold">
+      ( {{ movie.release_date | date : "MMMM YYYY" }} )
+    </span>
+    <div>
+      <p class="line-clamp-3 text-sm font-light">
+        {{ movie.overview }}
+      </p>
+    </div>
+    <div
+      [ngClass]="[
+        'mt-auto flex',
+        variant === 'vertical'
+          ? 'items-center flex-row justify-between'
+          : 'flex-col'
+      ]"
+    >
+      <span class="text-yellow-500 text-xl font-medium"> IMDB SCORE </span>
+      <span class="text-2xl flex gap-x-1 items-center hover:text-yellow-600">
+        <span class="font-medium">
+          {{ movie.vote_average | number : "1.2-2" }}
+        </span>
+        <ng-icon class="text-yellow-500" hlm name="lucideStar" />
+      </span>
+    </div>
+  </div>
+</div>

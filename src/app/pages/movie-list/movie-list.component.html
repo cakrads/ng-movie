@@ -1,3 +1,22 @@
-<p>
-  movie-list works!
-</p>
+<section class="container pt-20">
+  <h3 [ngClass]="[hlmH3, 'mb-4']">List Movie</h3>
+  <main>
+    <div
+      *ngIf="loading"
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      <div *ngFor="let skeleton of loadingSkeleton">
+        <app-skeleton class="w-[355px] h-[200px] rounded-lg"></app-skeleton>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!loading"
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    >
+      @for (item of movieList; track $index) {
+      <app-movie-card [movie]="item" variant="vertical"></app-movie-card>
+      }
+    </div>
+  </main>
+</section>

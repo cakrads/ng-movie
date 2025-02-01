@@ -13,52 +13,13 @@
           [alt]="movie.title"
           [width]="355"
           [height]="200"
-          [aspectRatio]="16 / 9"
           class="rounded-lg overflow-hidden hover:cursor-pointer"
         ></app-image>
         <hlm-hover-card-content
           *brnHoverCardContent
-          class="flex w-[400px] !rounded-lg !shadow-xl overflow-hidden"
+          class="flex w-[400px] !rounded-lg !shadow-xl overflow-hidden p-0"
         >
-          <div class="-mt-4 -ml-4 -mb-4">
-            <app-image
-              [ngSrc]="movieUrl + 'w220_and_h330_bestv2' + movie.poster_path"
-              [alt]="'test'"
-              [width]="167"
-              [height]="250"
-              [aspectRatio]="2 / 3"
-              class=""
-            ></app-image>
-          </div>
-          <div class="ml-4 space-y-2">
-            <a
-              href="/movie/{{ movie.id }}"
-              class="hover:text-red-500 hover:cursor-pointer font-bold md:text-xl line-clamp-2"
-            >
-              {{ movie.title }}
-            </a>
-            <span class="text-slate-400 font-semibold">
-              ( {{ movie.release_date | date : "MMMM YYYY" }} )
-            </span>
-            <div>
-              <p class="line-clamp-3 text-sm font-light">
-                {{ movie.overview }}
-              </p>
-            </div>
-            <div class="mt-auto">
-              <span class="text-yellow-500 text-xl font-medium">
-                IMDB SCORE
-              </span>
-              <span
-                class="text-2xl flex gap-x-1 items-center hover:text-yellow-600"
-              >
-                <span class="font-medium">
-                  {{ movie.vote_average | number : "1.2-2" }}
-                </span>
-                <ng-icon class="text-yellow-500" hlm name="lucideStar" />
-              </span>
-            </div>
-          </div>
+          <app-movie-card [movie]="movie"></app-movie-card>
         </hlm-hover-card-content>
       </brn-hover-card>
     </hlm-carousel-item>

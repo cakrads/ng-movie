@@ -38,9 +38,14 @@ export class TmdbService {
   private generateUrlParams(params: Record<string, any>): string {
     return Object.entries(params)
       .map(
-        ([key, value]) =>
-          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
-      )
+        ([key, value]) => {
+          if (!!value) {
+            return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+          } else {
+            return '';
+          }
+        })
+      .filter((param) => !!param)
       .join('&');
   }
 
