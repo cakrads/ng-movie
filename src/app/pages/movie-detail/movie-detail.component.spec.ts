@@ -3,20 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DetailPage } from './detail.component';
+import { MovieDetailPage } from './movie-detail.component';
 
-describe('DetailPage', () => {
-  let component: DetailPage;
-  let fixture: ComponentFixture<DetailPage>;
+describe('MovieDetailPage', () => {
+  let component: MovieDetailPage;
+  let fixture: ComponentFixture<MovieDetailPage>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DetailPage],
+      declarations: [MovieDetailPage],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailPage);
+    fixture = TestBed.createComponent(MovieDetailPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

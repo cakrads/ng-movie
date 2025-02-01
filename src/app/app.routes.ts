@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './pages/home/home.component';
-import { DetailPage } from './pages/detail/detail.component';
+import { MovieDetailPage } from './pages/movie-detail/movie-detail.component';
+import { MovieListPage } from './pages/movie-list/movie-list.component';
 
 export const routes: Routes = [
   {
@@ -10,8 +11,12 @@ export const routes: Routes = [
     //   import('./pages/home/home.component').then((m) => m.HomePage),
   },
   {
-    path: 'detail/:movieId',
-    component: DetailPage,
+    path: 'movie',
+    component: MovieListPage,
+  },
+  {
+    path: 'movie/:movieId',
+    component: MovieDetailPage,
   },
   // {
   //   path: '404',

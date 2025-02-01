@@ -6,7 +6,11 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Server,
   },
   {
-    path: 'detail/:movieId',
+    path: 'movie',
+    renderMode: RenderMode.Server,
+  },
+  {
+    path: 'movie/:movieId',
     renderMode: RenderMode.Server,
   },
   {

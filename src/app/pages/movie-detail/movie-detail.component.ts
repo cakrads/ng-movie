@@ -22,8 +22,8 @@ import { DetailMediaComponent } from './detail-media/detail-media.component';
 
 @Component({
   selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css'],
+  templateUrl: './movie-detail.component.html',
+  styleUrls: ['./movie-detail.component.css'],
   imports: [
     NgIcon,
     HlmIconDirective,
@@ -40,7 +40,7 @@ import { DetailMediaComponent } from './detail-media/detail-media.component';
   providers: [provideIcons({ lucideStar, lucidePlay })],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class DetailPage implements OnInit {
+export class MovieDetailPage implements OnInit {
   hlmH1 = hlmH1;
   hlmH4 = hlmH4;
 
