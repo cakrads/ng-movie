@@ -63,8 +63,6 @@ export class MovieDetailPage implements OnInit {
       const movieId = +params['movieId'];
       this.getMovieDetail(movieId);
     });
-    console.log('videoUrl', this.videoUrl);
-
   }
 
   getMovieDetail(movieId: number) {

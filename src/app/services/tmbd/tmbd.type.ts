@@ -32,6 +32,16 @@ export interface IMovieListData {
   vote_average: number;
   vote_count: number;
 }
+export interface IListOptions {
+  sortBy: {
+    label: string;
+    value: ListSortBy;
+  }[]
+  genres: {
+    label: string;
+    value: number;
+  }[]
+}
 
 
 export interface ITrendingParams extends IParamsList {
@@ -84,6 +94,10 @@ export interface IMovieImagesData {
 };
 export type IMovieImagesResponse = IMovieImagesData;
 
+export interface IMovieDetailParams {
+  append_to_response?: string;
+  language?: string;
+}
 export interface IMovieDetailData {
   adult: boolean;
   backdrop_path: string;
@@ -146,3 +160,4 @@ export interface IGenreData {
 export type IGenreListResponse = {
   genres: IGenreData[]
 };
+

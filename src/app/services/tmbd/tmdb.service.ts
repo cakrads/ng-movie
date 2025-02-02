@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Observable, } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { catchError, forkJoin, map, Observable, throwError, } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   IDiscoverMovieResponse,
   IDiscoverParams,
   IGenreListParams,
   IGenreListResponse,
+  IListOptions,
+  IMovieDetailParams,
   IMovieDetailResponse,
   IMovieImagesData,
   IMovieRecommandationResponse,
   IMovieVideoResponse,
   INowPlayingMovieResponse,
+  IParamsList,
   IPopularMovieResponse,
   IPopularParams,
   ITrendingParams,
@@ -35,127 +38,215 @@ export class TmdbService {
     };
   }
 
-  private generateUrlParams(params: Record<string, any>): string {
-    return Object.entries(params)
-      .map(
-        ([key, value]) => {
-          if (!!value) {
-            return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
-          } else {
-            return '';
-          }
-        })
-      .filter((param) => !!param)
-      .join('&');
+  private createHttpParams(
+    params: Partial<
+      IParamsList |
+      IGenreListParams |
+      IMovieDetailParams
+    >
+  ): HttpParams {
+    let httpParams = new HttpParams();
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== '') {
+        httpParams = httpParams.set(key, String(value));
+      }
+    });
+    return httpParams;
   }
 
-  getTrending(trendingParams: ITrendingParams): Observable<ITrendingResponse> {
-    const moviePath = `trending/movie/${trendingParams.period}`;
-    const urlParams = this.generateUrlParams({
+  getTrending(params: ITrendingParams): Observable<ITrendingResponse> {
+    const moviePath = `trending/movie/${params.period}`;
+    const url = `${this.baseUrl}${moviePath}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
-      page: trendingParams.page || 1,
+      ...params,
     } as ITrendingParams);
 
-    const url = `${this.baseUrl}${moviePath}?${urlParams}`;
-    console.info('TMDB getTrending', url);
-    return this.http.get<ITrendingResponse>(url);
+    console.info('TMDB getTrending', url, { params: httpParams.toString() });
+    return this.http
+      .get<ITrendingResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
-  getPopularMovie(popularParams: IPopularParams): Observable<IPopularMovieResponse> {
+  getPopularMovie(params?: IPopularParams): Observable<IPopularMovieResponse> {
     const moviePath = `movie/popular`;
-    const urlParams = this.generateUrlParams({
+    const url = `${this.baseUrl}${moviePath}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
-      page: popularParams.page ?? 1,
+      ...params
     });
 
-    const url = `${this.baseUrl}${moviePath}?${urlParams}`;
-    console.info('TMDB getPopularMovie', url);
-    return this.http.get<IPopularMovieResponse>(url);
+    console.info('TMDB getPopularMovie', url, { params: httpParams.toString() });
+    return this.http
+      .get<IPopularMovieResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
-  getNowPlaying(nowPlayingParams: IPopularParams): Observable<INowPlayingMovieResponse> {
+  getNowPlaying(params?: IPopularParams): Observable<INowPlayingMovieResponse> {
     const moviePath = 'movie/now_playing';
-    const urlParams = this.generateUrlParams({
+    const url = `${this.baseUrl}${moviePath}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
-      ...nowPlayingParams,
+      ...params,
     } as IPopularParams);
 
-    const url = `${this.baseUrl}${moviePath}?${urlParams}`;
-    console.info('TMDB getNowPlaying', url);
-    return this.http.get<INowPlayingMovieResponse>(url);
+    console.info('TMDB getNowPlaying', url, { params: httpParams.toString() });
+    return this.http
+      .get<INowPlayingMovieResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
   getDetail(movieId: number): Observable<IMovieDetailResponse> {
     const MOVIE_PATH = `movie/${movieId}`;
-    const urlParams = this.generateUrlParams({
+    const url = `${this.baseUrl}${MOVIE_PATH}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
       append_to_response: 'videos,images',
     });
 
-    const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
     console.info('TMDB getDetail', url);
-    return this.http.get<IMovieDetailResponse>(url);
+    return this.http
+      .get<IMovieDetailResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
-  getRecommendation(
-    movieId: number
-  ): Observable<IMovieRecommandationResponse> {
+  getRecommendation(movieId: number): Observable<IMovieRecommandationResponse> {
     const MOVIE_PATH = `movie/${movieId}/recommendations`;
-    const urlParams = this.generateUrlParams({
+    const url = `${this.baseUrl}${MOVIE_PATH}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
     });
 
-    const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
     console.info('TMDB getRecommendation:', url);
-    return this.http.get<IMovieRecommandationResponse>(url);
+    return this.http
+      .get<IMovieRecommandationResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
   getVideos(movieId: number): Observable<IMovieVideoResponse> {
     const MOVIE_PATH = `movie/${movieId}/videos`;
-    const urlParams = this.generateUrlParams({
+    const url = `${this.baseUrl}${MOVIE_PATH}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
     });
 
-    const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
-    console.info('TMDB getVideos:', url);
-    return this.http.get<IMovieVideoResponse>(url);
+    console.info('TMDB getVideos:', url)
+    return this.http
+      .get<IMovieVideoResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
   getImages(movieId: number): Observable<IMovieImagesData> {
     const MOVIE_PATH = `movie/${movieId}/images`;
-    const urlParams = this.generateUrlParams({
+    const url = `${this.baseUrl}${MOVIE_PATH}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
     });
 
-    const url = `${this.baseUrl}${MOVIE_PATH}?${urlParams}`;
     console.info('TMDB getImages:', url);
-    return this.http.get<IMovieImagesData>(url);
+    return this.http
+      .get<IMovieImagesData>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
   getGenreList(params?: IGenreListParams): Observable<IGenreListResponse> {
     const path = `genre/movie/list`;
     const defaultLanguage = 'en';
-    const urlParams = this.generateUrlParams({
+    const url = `${this.baseUrl}${path}`;
+
+    const httpParams = this.createHttpParams({
       ...this.defaultParams,
       language: params?.language ?? defaultLanguage,
     } as IGenreListParams);
 
-    const url = `${this.baseUrl}${path}?${urlParams}`;
-    console.info('TMDB getGenreList:', url);
-    return this.http.get<IGenreListResponse>(url)
+    console.info('TMDB getGenreList:', url, { params: httpParams.toString() });
+    return this.http
+      .get<IGenreListResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
   }
 
   // Fetch movies by genre
-  getDiscoverMovies(params: IDiscoverParams): Observable<IDiscoverMovieResponse> {
+  getDiscoverMovies(params?: IDiscoverParams): Observable<IDiscoverMovieResponse> {
     const path = `discover/movie`;
-    const urlParams = this.generateUrlParams({
-      ...this.defaultParams,
-      with_genres: params.with_genres,
-    } as IDiscoverParams);
+    const url = `${this.baseUrl}${path}`;
 
-    const url = `${this.baseUrl}${path}?${urlParams}`;
-    console.info('TMDB getDiscoverMovies:', url);
-    return this.http.get<IDiscoverMovieResponse>(url);
+    const httpParams = this.createHttpParams({
+      ...this.defaultParams,
+      ...params
+    });
+
+    console.info('TMDB getDiscoverMovies:', url, { params: httpParams.toString() });
+    return this.http
+      .get<IDiscoverMovieResponse>(url, { params: httpParams })
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching movies:', error);
+          return throwError(() => new Error('Failed to fetch movies. Please try again.'));
+        })
+      );
+  }
+
+  getDiscoverSortByOptions(): Observable<IListOptions> {
+    const sortByOptions = [
+      { label: 'Most Popular', value: 'popularity.desc' },
+      { label: 'Top Rated', value: 'vote_average.desc' },
+    ] as IListOptions["sortBy"];
+
+    return forkJoin({
+      genres: this.getGenreList(),
+    }).pipe(
+      map(({ genres }) => ({
+        sortBy: sortByOptions,
+        genres: genres.genres.map((g) => ({ label: g.name, value: g.id })),
+      }))
+    );
   }
 
 }

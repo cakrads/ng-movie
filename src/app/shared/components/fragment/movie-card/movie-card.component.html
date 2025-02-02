@@ -12,16 +12,18 @@
   >
     <app-image
       [ngSrc]="
-        variant === 'vertical'
-          ? movieUrl + 'w355_and_h200_face' + movie.backdrop_path
-          : movieUrl + 'w220_and_h330_bestv2' + movie.poster_path
+        movie.backdrop_path && movie.poster_path
+          ? variant === 'vertical'
+            ? movieUrl + 'w355_and_h200_face' + movie.backdrop_path
+            : movieUrl + 'w220_and_h330_bestv2' + movie.poster_path
+          : ''
       "
-      [alt]="'ng-movie' + movie.title"
+      [alt]="'ng-movie-' + movie.title"
       [fill]="true"
       [zoom]="true"
     ></app-image>
   </div>
-  <div class="p-4 space-y-2">
+  <div class="flex flex-col h-full p-4 space-y-2">
     <a
       href="/movie/{{ movie.id }}"
       class="hover:text-red-500 hover:cursor-pointer font-bold md:text-xl line-clamp-2"
@@ -31,7 +33,7 @@
     <span class="text-slate-400 font-semibold">
       ( {{ movie.release_date | date : "MMMM YYYY" }} )
     </span>
-    <div>
+    <div class="flex-grow">
       <p class="line-clamp-3 text-sm font-light">
         {{ movie.overview }}
       </p>

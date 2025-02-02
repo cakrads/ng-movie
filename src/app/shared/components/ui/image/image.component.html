@@ -6,7 +6,7 @@
   }"
 >
   <img
-    [ngSrc]="ngSrc"
+    [ngSrc]="ngSrc === '' ? imagePlaceholder : ngSrc"
     [alt]="alt"
     [attr.width]="!fill ? width : null"
     [attr.height]="!fill ? height : null"
