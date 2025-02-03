@@ -4,13 +4,25 @@ import { IListOptions, IMovieListData, IParamsList, TmdbService } from '@app/ser
 import { hlmH2 } from '@app/shared/components/ui/ui-typography-helm/src';
 import { MovieCardComponent } from "../../shared/components/fragment/movie-card/movie-card.component";
 import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
+import { PaginationComponent } from '@app/shared/components/ui/ui-pagination-helm/src/component';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
-  imports: [CommonModule, NgClass, MovieCardComponent, HlmSkeletonComponent],
+  imports: [CommonModule, NgClass, MovieCardComponent, HlmSkeletonComponent, PaginationComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  animations: [
+    trigger('fadeInOut', [
+      state('loading', style({ opacity: 1 })),
+      state('loaded', style({ opacity: 1 })),
+      transition('loading => loaded', [
+        style({ opacity: 0 }),
+        animate('500ms ease-in'),
+      ]),
+    ]),
+  ],
 })
 export class MovieListPage implements OnInit {
   hlmH2 = hlmH2;
@@ -45,16 +57,14 @@ export class MovieListPage implements OnInit {
   }
 
   private getMovieList(): void {
-    this.loading = this.params.page === 1;
+    this.loading = true;
     this.tmdbService.getDiscoverMovies(this.params).subscribe({
       next: (response) => {
-        if (this.params.page === 1) {
-          this.movieList = response.results;
-        } else {
-          this.movieList = this.movieList.concat(response.results);
-        }
+        this.movieList = response.results;
         this.totalPages = response.total_pages;
-        this.loading = false;
+        setTimeout(() => {
+          this.loading = false;
+        }, 500); // minimizing blink effect
       },
       error: (err) => {
         console.error('Error fetching movies:', err);
@@ -68,6 +78,8 @@ export class MovieListPage implements OnInit {
     if (newPage < 1 || newPage > this.totalPages) return;
     this.params.page = newPage;
     this.getMovieList();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // Handle search input
@@ -83,6 +95,7 @@ export class MovieListPage implements OnInit {
     if (e.target instanceof HTMLSelectElement) {
       const sortBy = e.target.value as IParamsList['sort_by'];
       if (!sortBy) return; // Prevent unnecessary calls
+      this.params.page = 1;
       this.params.sort_by = sortBy;
       this.getMovieList();
     }
@@ -93,6 +106,7 @@ export class MovieListPage implements OnInit {
     if (e.target instanceof HTMLSelectElement) {
       const genreId = e.target.value;
       if (!genreId) return; // Prevent unnecessary calls
+      this.params.page = 1;
       this.params.with_genres = +genreId;
       this.getMovieList();
     }

@@ -23,21 +23,31 @@
   </header>
   <main>
     <div
-      *ngIf="loading"
+      [@fadeInOut]="loading ? 'loading' : 'loaded'"
       class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
-      <ng-container *ngFor="let skeleton of loadingSkeleton" class="h-[300px]">
-        <hlm-skeleton class="w-[full] h-[346px] rounded-lg" />
+      <ng-container *ngIf="loading">
+        <ng-container
+          *ngFor="let skeleton of loadingSkeleton"
+          class="h-[300px]"
+        >
+          <hlm-skeleton class="w-[full] h-[346px] rounded-lg" />
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="!loading">
+        @for (item of movieList; track $index) {
+        <app-movie-card [movie]="item" variant="vertical"></app-movie-card>
+        }
       </ng-container>
     </div>
-
-    <div
-      *ngIf="!loading"
-      class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-    >
-      @for (item of movieList; track $index) {
-      <app-movie-card [movie]="item" variant="vertical"></app-movie-card>
-      }
-    </div>
   </main>
+  <footer class="flex my-4 justify-end">
+    <app-pagination
+      [currentPage]="params.page ?? 1"
+      [totalPages]="totalPages"
+      (pageChange)="handlePage($event)"
+    >
+    </app-pagination>
+  </footer>
 </section>
