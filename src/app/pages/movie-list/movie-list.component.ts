@@ -3,17 +3,18 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { IListOptions, IMovieListData, IParamsList, TmdbService } from '@app/services/tmbd/tmdb.service';
 import { hlmH2 } from '@app/shared/components/ui/ui-typography-helm/src';
 import { MovieCardComponent } from "../../shared/components/fragment/movie-card/movie-card.component";
+import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
-  imports: [CommonModule, NgClass, MovieCardComponent],
+  imports: [CommonModule, NgClass, MovieCardComponent, HlmSkeletonComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MovieListPage implements OnInit {
   hlmH2 = hlmH2;
-  loadingSkeleton = Array.from({ length: 10 }, (_, i) => i + 1);
+  loadingSkeleton = Array.from({ length: 12 }, (_, i) => i + 1);
 
   loading = true;
   movieList: IMovieListData[] = [];

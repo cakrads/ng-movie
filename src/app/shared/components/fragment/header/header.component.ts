@@ -17,14 +17,14 @@ export class HeaderComponent implements OnInit {
   isScrolled = false;
   isBrowser: boolean = false;
 
-  constructor(@Inject(PLATFORM_ID) readonly platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) readonly platformId: Object) { }
 
   ngOnInit() {
     this.isBrowser = isPlatformBrowser(this.platformId);
     if (this.isBrowser) {
       const scrollPosition =
         window.scrollY || document.documentElement.scrollTop;
-      this.isScrolled = scrollPosition > 50;
+      this.isScrolled = scrollPosition > 20;
     }
   }
 
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
       if (window) {
         const scrollPosition =
           window.scrollY || document.documentElement.scrollTop;
-        this.isScrolled = scrollPosition > 50; // Change based on desired scroll offset
+        this.isScrolled = scrollPosition > 20; // Change based on desired scroll offset
       }
     }
   }

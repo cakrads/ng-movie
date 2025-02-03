@@ -1,13 +1,19 @@
-<section class="container pt-20">
+<section class="container py-20">
   <header class="flex justify-between items-center mb-6">
     <h2 [ngClass]="hlmH2">Movie List</h2>
-    <div>
-      <select (change)="handleSortBy($event)">
+    <div class="flex flex-row gap-4">
+      <select
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        (change)="handleSortBy($event)"
+      >
         <option *ngFor="let sort of listOptions.sortBy" [value]="sort.value">
           {{ sort.label }}
         </option>
       </select>
-      <select (change)="handleGenre($event)">
+      <select
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        (change)="handleGenre($event)"
+      >
         <option value="">All Genres</option>
         <option *ngFor="let genre of listOptions.genres" [value]="genre.value">
           {{ genre.label }}
@@ -20,9 +26,9 @@
       *ngIf="loading"
       class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
-      <div *ngFor="let skeleton of loadingSkeleton">
-        <app-skeleton class="w-[355px] h-[200px] rounded-lg"></app-skeleton>
-      </div>
+      <ng-container *ngFor="let skeleton of loadingSkeleton" class="h-[300px]">
+        <hlm-skeleton class="w-[full] h-[346px] rounded-lg" />
+      </ng-container>
     </div>
 
     <div
