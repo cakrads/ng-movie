@@ -11,11 +11,24 @@
     >
       <a href="/" class="text-foreground">Ng-Movie</a>
     </div>
-    <!-- <div class="hidden md:block">
-      <a href="#" class="text-sm font-bold p-4">Home</a>
-      <a href="#" class="text-sm font-bold p-4">Movies</a>
-      <a href="#" class="text-sm font-bold p-4">TV Shows</a>
-      <a href="#" class="text-sm font-bold p-4">People</a>
-    </div> -->
+    <div class="hidden md:block">
+      <a
+        href="/"
+        [ngClass]="[
+          'text-xl p-4 transition',
+          isActive('/') ? 'text-primary font-bold' : ''
+        ]"
+      >
+        Home
+      </a>
+      <a
+        href="/movie"
+        [ngClass]="[
+          'text-xl p-4 transition',
+          isActive('/movie') ? 'text-primary font-bold' : ''
+        ]"
+        >Movies</a
+      >
+    </div>
   </div>
 </header>

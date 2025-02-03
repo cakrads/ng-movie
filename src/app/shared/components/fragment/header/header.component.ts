@@ -6,6 +6,7 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,10 @@ export class HeaderComponent implements OnInit {
   isScrolled = false;
   isBrowser: boolean = false;
 
-  constructor(@Inject(PLATFORM_ID) readonly platformId: Object) { }
+  constructor(
+    @Inject(PLATFORM_ID) readonly platformId: Object,
+    readonly router: Router
+  ) { }
 
   ngOnInit() {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -26,6 +30,10 @@ export class HeaderComponent implements OnInit {
         window.scrollY || document.documentElement.scrollTop;
       this.isScrolled = scrollPosition > 20;
     }
+  }
+
+  isActive(route: string): boolean {
+    return this.router.url === route;
   }
 
   @HostListener('window:scroll', [])
