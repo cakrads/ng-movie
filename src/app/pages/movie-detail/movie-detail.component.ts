@@ -13,12 +13,13 @@ import { RuntimePipe } from '@app/shared/pipes/runtime/runtime.pipe';
 import { HlmButtonDirective } from '@app/shared/components/ui/ui-button-helm/src';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { HlmIconDirective } from '@app/shared/components/ui/ui-icon-helm/src';
-import { lucidePlay, lucideStar } from '@ng-icons/lucide';
+import { lucidePlay, lucideStar, lucideHeart } from '@ng-icons/lucide';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { ActivatedRoute } from '@angular/router';
 import { TmdbService } from '@app/services/tmbd/tmdb.service';
 import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
 import { DetailMediaComponent } from './detail-media/detail-media.component';
+import { FavoriteMovieService } from '@app/services/favorite-movie/favorite-movie.service';
 
 @Component({
   selector: 'app-detail',
@@ -37,7 +38,7 @@ import { DetailMediaComponent } from './detail-media/detail-media.component';
     RecommendationComponent,
     DetailMediaComponent
   ],
-  providers: [provideIcons({ lucideStar, lucidePlay })],
+  providers: [provideIcons({ lucideStar, lucidePlay, lucideHeart })],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MovieDetailPage implements OnInit {
@@ -53,7 +54,10 @@ export class MovieDetailPage implements OnInit {
   movieDetail: IMovieDetailData = {} as IMovieDetailData;
   backdropUrl = '';
 
-  constructor(readonly tmdbService: TmdbService) { }
+  constructor(
+    readonly tmdbService: TmdbService,
+    readonly favoriteMovieService: FavoriteMovieService
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -77,5 +81,17 @@ export class MovieDetailPage implements OnInit {
       },
       error: () => { },
     });
+  }
+
+  toggleFavorite(movieId: number): void {
+    if (this.favoriteMovieService.isFavorite(movieId)) {
+      this.favoriteMovieService.removeFavorite(movieId);
+    } else {
+      this.favoriteMovieService.addFavorite(movieId);
+    }
+  }
+
+  isFavorite(movieId: number): boolean {
+    return this.favoriteMovieService.isFavorite(movieId);
   }
 }

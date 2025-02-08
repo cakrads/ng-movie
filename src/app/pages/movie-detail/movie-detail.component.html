@@ -46,7 +46,7 @@
         <span> {{ movieDetail.runtime | runtimeFormat }} </span>
       </div>
       <div
-        class="flex flex-row sm:flex-col md:flex-row gap-4 sm:gap-6 md:gap-4 mb-6"
+        class="flex flex-row items-center sm:flex-col md:flex-row gap-4 sm:gap-6 md:gap-4 mb-6"
       >
         <div>
           <a
@@ -73,6 +73,29 @@
             </span>
             <ng-icon class="text-yellow-500" hlm name="lucideStar" />
           </span>
+        </div>
+        <div>
+          <button
+            hlmBtn
+            (click)="toggleFavorite(movieDetail.id)"
+            [ngClass]="[
+              '!rounded-full flex flex-row gap-2 font-medium !p-0 !w-11 !h-11 group transition-all duration-300',
+              isFavorite(movieDetail.id)
+                ? 'bg-primary text-white'
+                : 'bg-secondary hover:bg-secondary hover:text-primary'
+            ]"
+          >
+            <ng-icon
+              [ngClass]="[
+                'transition-all duration-300',
+                isFavorite(movieDetail.id)
+                  ? 'text-white'
+                  : 'text-primary group-hover:text-primary'
+              ]"
+              hlm
+              name="lucideHeart"
+            />
+          </button>
         </div>
       </div>
       <div class="mb-6 max-w-4xl">
