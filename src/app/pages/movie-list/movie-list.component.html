@@ -1,5 +1,7 @@
 <section class="container py-32">
-  <header class="flex justify-between items-center mb-6">
+  <header
+    class="flex flex-col md:flex-row gap-4 justify-between items-center mb-10 md:mb-6"
+  >
     <h2 [ngClass]="hlmH2">Movie List</h2>
     <div class="flex flex-row gap-4">
       <select
@@ -21,7 +23,7 @@
       </select>
     </div>
   </header>
-  <main>
+  <main class="mb-8">
     <div
       [@fadeInOut]="loading ? 'loading' : 'loaded'"
       class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"

@@ -6,13 +6,13 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { HeaderMobileComponent } from './header-mobile-menu/header-mobile-menu.component';
+import { HeaderMenuComponent } from './header-menu/header-menu.component';
 
 @Component({
   selector: 'app-header',
-  imports: [NgClass],
+  imports: [NgClass, HeaderMenuComponent, HeaderMobileComponent],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   isScrolled = false;
@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) readonly platformId: Object,
-    readonly router: Router
   ) { }
 
   ngOnInit() {
@@ -32,9 +31,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  isActive(route: string): boolean {
-    return this.router.url === route;
-  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

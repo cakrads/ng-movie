@@ -5,31 +5,17 @@
   }"
   class="fixed z-50 top-0 left-0 w-full transition-colors duration-300"
 >
-  <div class="container mx-auto px-6 py-5 flex items-center justify-between">
+  <div class="container mx-auto px-6 py-4 flex items-center justify-between">
     <div
       class="font-extrabold text-2xl lg:text-2xl scroll-m-20 tracking-tight text-primary"
     >
       <a href="/" class="text-foreground">Ng-Movie</a>
     </div>
     <div class="hidden md:block">
-      <a
-        href="/"
-        [ngClass]="[
-          'text-xl p-4 transition',
-          isActive('/') ? 'text-primary font-bold' : ''
-        ]"
-      >
-        Home
-      </a>
-      <a
-        href="/movie"
-        [ngClass]="[
-          'text-xl p-4 transition',
-          isActive('/movie') ? 'text-primary font-bold' : ''
-        ]"
-      >
-        Movies
-      </a>
+      <app-header-menu></app-header-menu>
+    </div>
+    <div class="md:hidden">
+      <app-header-mobile></app-header-mobile>
     </div>
   </div>
 </header>
