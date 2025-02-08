@@ -94,25 +94,21 @@ For more information on using the Angular CLI, including detailed command refere
 - env: generate app/environments/environtment.ts fron .env when run dev and run build
 
 ## Feature as Tech View
-Home Page
+[] Home Page
    [✅] Trending Today
    [✅] Trending Week
    [✅] Popular
-   [] List Movies by Genre 
+   [✅] List Movies by Genre 
    [] Search
-Detail Page
+[] Detail Page
    [✅] Movie Detail
    [✅] Movie Recommandation
    [✅] Movie Media - Posters, Backdrops, and Videos 
+   [✅] Favorite
    [] Video Trailer
-   [] Favorite
-Favorites Page
-   [] List Favorite Movie
-   [] 
 [] List Movie
-   [] List Movie
-   [] Search
-   [] Filter
+   [✅] List Movie
+   [✅] Filter
 Other
    [] Theme 
 
@@ -122,6 +118,7 @@ Other
 [✅] Enhance image placeholder
 [✅] Blip in Home Page, not happend in Detail page
       only happen in local
+[] enhance mobile
 [] Add page 404
 [] add eslint
    [] global
@@ -129,7 +126,7 @@ Other
 [] enhnace styling, use space-x-2 not flex gap-2
 [] Add Video
    click trailer, open dialog, hit API, play the video
-[] Show All genre in home
+[✅] Show All genre in home
 [] Add Feature My Favorite
    [] Add and Delete in Detail
    [] List Favorite from Navbar

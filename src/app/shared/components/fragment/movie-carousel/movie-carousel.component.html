@@ -15,9 +15,15 @@
           [height]="200"
           class="rounded-lg overflow-hidden hover:cursor-pointer"
         ></app-image>
+        <a
+          href="/movie/{{ movie.id }}"
+          class="block md:hidden py-2 hover:text-red-500 hover:cursor-pointer font-bold text-lg md:text-xl line-clamp-1"
+        >
+          {{ movie.title }}
+        </a>
         <hlm-hover-card-content
           *brnHoverCardContent
-          class="flex w-[400px] !rounded-lg !shadow-xl overflow-hidden p-0"
+          class="hidden md:flex w-[400px] !rounded-lg !shadow-xl overflow-hidden p-0"
         >
           <app-movie-card [movie]="movie"></app-movie-card>
         </hlm-hover-card-content>

@@ -14,7 +14,7 @@ export class HlmCarouselShadowAfterComponent {
   protected _computedClass = computed(() =>
     hlm(
       'absolute right-0 translate-x-1/2 top-1/2 -translate-y-1/2',
-      'bg-gradient-to-r from-transparent to-90% to-background  w-16 h-[calc(100%+10px)]',
+      'bg-gradient-to-r from-transparent to-90% to-background  w-8 md:w-16 h-[calc(100%+10px)]',
       this.userClass()
     )
   );
