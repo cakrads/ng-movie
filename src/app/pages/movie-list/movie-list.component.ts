@@ -40,7 +40,6 @@ export class MovieListPage implements OnInit {
     page: 1,
     query: '',
     sort_by: 'popularity.desc',
-    with_genres: undefined,
   };
 
   constructor(readonly tmdbService: TmdbService) { }
@@ -97,6 +96,15 @@ export class MovieListPage implements OnInit {
       if (!sortBy) return; // Prevent unnecessary calls
       this.params.page = 1;
       this.params.sort_by = sortBy;
+
+      if (sortBy === 'vote_average.desc') {
+        this.params.vote_average = { lte: 10, gte: 0 };
+        this.params.vote_count = { gte: 300 };
+      } else {
+        delete this.params.vote_average;
+        delete this.params.vote_count;
+      }
+
       this.getMovieList();
     }
   }

@@ -41,7 +41,7 @@ import { HeaderMenuComponent } from '../header-menu/header-menu.component';
           <div
             class="font-extrabold text-2xl lg:text-2xl scroll-m-20 tracking-tight text-primary"
           >
-            <a href="/" class="text-foreground">Ng-Movie</a>
+            <a href="/" class="text-foreground">Ng-Animation</a>
           </div>
         </hlm-sheet-header>
         <menu>

@@ -47,7 +47,7 @@
           aria-label="tabs trending"
         >
           <button hlmTabsTrigger="today">Today</button>
-          <button hlmTabsTrigger="week" (click)="_handleTrendingWeek()">
+          <button hlmTabsTrigger="week" (click)="handleTrendingWeek()">
             This Week
           </button>
         </hlm-tabs-list>
@@ -55,14 +55,14 @@
     </div>
     <div hlmTabsContent="today" class="min-h-[200px]">
       <app-movie-carousel
-        [loading]="trendingMoviesDay.loading"
-        [movieData]="trendingMoviesDay.data"
+        [loading]="movieCategories.trendingDay.loading"
+        [movieData]="movieCategories.trendingDay.data"
       ></app-movie-carousel>
     </div>
     <div hlmTabsContent="week" class="min-h-[200px]">
       <app-movie-carousel
-        [loading]="trendingMoviesWeek.loading"
-        [movieData]="trendingMoviesWeek.data"
+        [loading]="movieCategories.trendingWeek.loading"
+        [movieData]="movieCategories.trendingWeek.data"
       ></app-movie-carousel>
     </div>
   </hlm-tabs>
@@ -71,19 +71,23 @@
 <section id="home-popular" class="mb-16 container overflow-hidden">
   <h3 [ngClass]="[hlmH3, 'mb-4']">What's Popular</h3>
   <app-movie-carousel
-    [loading]="popularMovies.loading"
-    [movieData]="popularMovies.data"
+    [loading]="movieCategories.popularAnimation.loading"
+    [movieData]="movieCategories.popularAnimation.data"
   ></app-movie-carousel>
 </section>
 
-<section id="home-popular" class="mb-16 container overflow-hidden">
+<section id="home-now-playing" class="mb-16 container overflow-hidden">
   <h3 [ngClass]="[hlmH3, 'mb-4']">Now Playing</h3>
   <app-movie-carousel
-    [loading]="nowPlayingMovies.loading"
-    [movieData]="nowPlayingMovies.data"
+    [loading]="movieCategories.nowPlayingAnimation.loading"
+    [movieData]="movieCategories.nowPlayingAnimation.data"
   ></app-movie-carousel>
 </section>
 
-@defer{
-<app-movies-by-genre></app-movies-by-genre>
-}
+<section id="home-up-comming" class="mb-16 container overflow-hidden">
+  <h3 [ngClass]="[hlmH3, 'mb-4']">Upcomming</h3>
+  <app-movie-carousel
+    [loading]="movieCategories.upcomingAnimation.loading"
+    [movieData]="movieCategories.upcomingAnimation.data"
+  ></app-movie-carousel>
+</section>

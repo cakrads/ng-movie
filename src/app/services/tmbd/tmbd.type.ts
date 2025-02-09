@@ -1,3 +1,5 @@
+export type IMainType = 'animation' | 'anime';
+
 export interface IResponseList<T> {
   page: number;
   results: T;
@@ -13,6 +15,8 @@ export interface IParamsList {
   query?: string;
   sort_by?: ListSortBy;
   with_genres?: number;
+  vote_average?: { gte: number, lte: number };
+  vote_count?: { gte: number };
 }
 
 export interface IMovieListData {
@@ -46,7 +50,6 @@ export interface IListOptions {
 
 export interface ITrendingParams extends IParamsList {
   period: 'day' | 'week';
-  type: 'movie';
 }
 export type ITrendingResponse = IResponseList<IMovieListData[]>;
 
