@@ -1,138 +1,107 @@
-# MyMovie
+# Nganimation - Animated Movie App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.0.
+## Overview
+Animated Movie App is a modern web application designed to help users discover animated movies easily. Built with Angular 19, styled with Tailwind CSS, and leveraging Spartan UI components, the app provides a seamless and visually appealing experience. The movie data is powered by TMDB API.
 
-## Development server
+Live Demo: [nganimation.vercel.app](https://nganimation.vercel.app)
 
-To start a local development server, run:
+![Home Desktop](/public/result/home-desktop.png)
 
-```bash
-ng serve
-```
+## Features
+### Tech Stack
+- **Angular 19:** Core framework for building the application ([srouce](http://angular.dev/)).
+- **TMDB API:** Fetch movie data, including details and ratings ([source](https://www.themoviedb.org/)).
+- **Tailwind CSS:** Modern styling for a clean and responsive design ([source](https://tailwindui.com/)).
+- **Spartan UI:** Headless UI components for better accessibility ([source](https://spartan.ng/)).
+- **Vercel:** Deployment platform for hosting the app ([source](https://vercel.com/)).
+- **Environment Handling:** Generates `app/environments/environment.ts` from `.env` during development and build.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Feature as Tech View
+**Home Page**
+[✅] Trending Today
+[✅] Trending Week
+[✅] Popular
+[✅] List Movies by Genre 
+[] Search
+**Detail Page**
+[✅] Movie Detail
+[✅] Movie Recommandation
+[✅] Movie Media - Posters, Backdrops, and Videos 
+[✅] Favorite
+[ ] Video Trailer
+**List Movie**
+[✅] List Movie
+[✅] Filter
+**Other**
+[] Theme 
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Tech
-### Styling
-tailwind + spartan
-- https://www.spartan.ng/
-
-### ESLINT
+#### ESLINT
 https://justangular.com/blog/configure-prettier-and-eslint-with-angular
 
-### API Source
-https://www.themoviedb.org/
+## Installation & Setup
+### Prerequisites
+- Node.js (latest LTS recommended)
+- Angular CLI installed globally (`npm install -g @angular/cli`)
 
-## Additional Resources
+### Steps
+```bash
+# Clone the repository
+git clone https://github.com/your-repo/movie-animation-app.git
+cd movie-animation-app
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Install dependencies
+npm install
 
+# Create a .env from .env.example file and add your TMDB API key
+# Example:
+# API_KEY=your_api_key_here
 
-### Example Project
-- https://github.com/tastejs/angular-movies/tree/main
-  eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ZjNmUxZGQyMzFiZDFmMmNhYTE5OGU3MzE3YTZhNCIsInN1YiI6IjYwZWZiOTZlYTQ0ZDA5MDAyZDQ0ZjNlNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nvvleDHS5FWTK9UbhKfeuW8L5w4hyjGHAphNtQJuYSY
-- https://github.com/JancoBH/Angular-Movies
-- https://github.com/mazyar1128/tailwindcss-movie-dashboard
+# Run the development server
+npm run dev
 
+# Build for production
+npm run build
+```
 
-## Deploy
-### Useful
+### Deployment
+The app is deployed using Vercel. To deploy your own instance:
+```bash
+vercel
+```
+#### Useful Guide for Development
 - https://dev.to/jdgamble555/the-state-of-angular-ssr-deployment-in-2024-17jb
 - https://dev.to/jdgamble555/how-to-deploy-angular-universal-to-vercel-31d0/comments
 
-## Feature as Tech View
-- Angular: Core Framework
-- TMDB : Movie DB using 
-- Tailwind: Styling
-- Spartan: Headless Component
-- Use Light and Dark
-- NgRx: ????
-- Multi Languange
-- Vercel: Deploy
-- env: generate app/environments/environtment.ts fron .env when run dev and run build
-
-## Feature as Tech View
-[] Home Page
-   [✅] Trending Today
-   [✅] Trending Week
-   [✅] Popular
-   [✅] List Movies by Genre 
-   [] Search
-[] Detail Page
-   [✅] Movie Detail
-   [✅] Movie Recommandation
-   [✅] Movie Media - Posters, Backdrops, and Videos 
-   [✅] Favorite
-   [] Video Trailer
-[] List Movie
-   [✅] List Movie
-   [✅] Filter
-Other
-   [] Theme 
-
+## Screenshots
+![Home Desktop](/public/result/home-desktop.png)
+![Home Mobile](/public/result/home-mobile.png)
+![Detail Desktop](/public/result/detail-desktop.png)
+![Detail Mobile](/public/result/detail-mobile.png)
 
 ## Next To Dev or Enhance
 [✅] enhance carousel layout shift
 [✅] Enhance image placeholder
 [✅] Blip in Home Page, not happend in Detail page
       only happen in local
-[] enhance mobile
+[✅] enhance mobile
+[✅] Show All genre in home
+[✅] Update Readme
+[✅] Add Feature My Favorite in Detail
+[✅] Make sure how to deploy in vercel, 
+   [] create documentation how to deploy Angular 19 in vercel
 [] Add page 404
 [] add eslint
    [] global
    [] delete unused import
-[] enhnace styling, use space-x-2 not flex gap-2
 [] Add Video
    click trailer, open dialog, hit API, play the video
-[✅] Show All genre in home
-[] Add Feature My Favorite
-   [] Add and Delete in Detail
-   [] List Favorite from Navbar
 [] Theme
 [] international i9
-[] Update Readme
-   https://dev.to/krivanek06/angular-default-image-placeholder-3dfc
-   https://angular.dev/guide/image-optimization
-[] Make sure how to deploy in vercel, take a notes
+
+### Example Project
+- https://github.com/tastejs/angular-movies/tree/main
+- https://github.com/JancoBH/Angular-Movies
+- https://github.com/mazyar1128/tailwindcss-movie-dashboard
+
+## License
+This project is licensed under the MIT License.
