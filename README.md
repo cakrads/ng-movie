@@ -18,21 +18,21 @@ Live Demo: [nganimation.vercel.app](https://nganimation.vercel.app)
 
 ### Feature as Tech View
 **Home Page**
-[✅] Trending Today
-[✅] Trending Week
-[✅] Popular
-[✅] List Movies by Genre 
-[] Search
-**Detail Page**
-[✅] Movie Detail
-[✅] Movie Recommandation
-[✅] Movie Media - Posters, Backdrops, and Videos 
-[✅] Favorite
-[ ] Video Trailer
-**List Movie**
-[✅] List Movie
-[✅] Filter
-**Other**
+[✅] Trending Today 
+[✅] Trending Week 
+[✅] Popular 
+[✅] List Movies by Genre  
+[] Search 
+**Detail Page** 
+[✅] Movie Detail 
+[✅] Movie Recommandation 
+[✅] Movie Media - Posters, Backdrops, and Videos  
+[✅] Favorite 
+[ ] Video Trailer 
+**List Movie** 
+[✅] List Movie 
+[✅] Filter 
+**Other** 
 [] Theme 
 
 #### ESLINT
@@ -79,24 +79,21 @@ vercel
 ![Detail Mobile](/public/result/detail-mobile.png)
 
 ## Next To Dev or Enhance
-[✅] enhance carousel layout shift
-[✅] Enhance image placeholder
-[✅] Blip in Home Page, not happend in Detail page
-      only happen in local
-[✅] enhance mobile
-[✅] Show All genre in home
-[✅] Update Readme
-[✅] Add Feature My Favorite in Detail
+[✅] enhance carousel layout shift 
+[✅] Enhance image placeholder 
+[✅] Blip in Home Page, not happend in Detail page, clear this happen in local cause hydration
+[✅] enhance mobile 
+[✅] Show All genre in home 
+[✅] Update Readme 
+[✅] Add Feature My Favorite in Detail 
 [✅] Make sure how to deploy in vercel, 
-   [] create documentation how to deploy Angular 19 in vercel
-[] Add page 404
-[] add eslint
-   [] global
-   [] delete unused import
-[] Add Video
-   click trailer, open dialog, hit API, play the video
-[] Theme
-[] international i9
+[] Add page 404 
+[] create documentation how to deploy Angular 19 in vercel 
+[] add eslint global 
+[] eslint delete unused import 
+[] Add Video: click trailer, open dialog, hit API, play the video 
+[] Theme 
+[] international i9 
 
 ### Example Project
 - https://github.com/tastejs/angular-movies/tree/main
