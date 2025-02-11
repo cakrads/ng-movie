@@ -33,7 +33,7 @@ Live Demo: [nganimation.vercel.app](https://nganimation.vercel.app)
 [✅] List Movie \
 [✅] Filter \
 **Other** \
-[] Theme \
+[] Theme
 
 #### ESLINT
 https://justangular.com/blog/configure-prettier-and-eslint-with-angular
