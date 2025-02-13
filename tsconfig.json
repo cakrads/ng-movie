@@ -47,6 +47,9 @@
       ],
       "@spartan-ng/ui-sheet-helm": [
         "src/app/shared/components/ui/ui-sheet-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-dialog-helm": [
+        "src/app/shared/components/ui/ui-dialog-helm/src/index.ts"
       ]
     },
     "outDir": "./dist/out-tsc",

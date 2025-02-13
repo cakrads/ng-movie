@@ -63,11 +63,9 @@
         </ng-container>
         } @else if (!!videos && videos.results.length > 0) {
         <ng-container *ngFor="let video of videos.results | slice : 0 : 10">
-          <a
+          <button
             class="group hover:cursor-pointer relative w-[533px] h-[300px] overflow-hidden"
-            [href]="mediaInfo.videoUrl(video.key)"
-            target="_blank"
-            rel="noopener noreferrer"
+            (click)="handleOpenVideo(video.key)"
           >
             <app-image
               class="rounded-lg transform transition-transform duration-500 ease-in-out group-hover:scale-110"
@@ -89,10 +87,20 @@
                 size="sm"
               />
             </div>
-          </a>
+          </button>
         </ng-container>
         }
       </hlm-scroll-area>
     </div>
   </hlm-tabs>
 </section>
+
+<hlm-dialog [state]="dialogState()" (closed)="handleCloseVideo()">
+  <hlm-dialog-content
+    [closeBtn]="false"
+    class="overflow-hidden p-0 xl:w-[1024px] lg:w-[800px] md:w-[640px] sm:w-[560px] w-[480px] aspect-video"
+    *brnDialogContent="let ctx"
+  >
+    <app-youtube-iframe [videoId]="playVideo.videoKey" />
+  </hlm-dialog-content>
+</hlm-dialog>

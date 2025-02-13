@@ -69,21 +69,33 @@
         class="flex flex-row md:flex-row items-center gap-4 sm:gap-6 md:gap-4 mb-6"
       >
         <div>
-          <a
-            hlmBtn
-            class="rounded-full flex flex-row gap-2 font-medium px-4"
-            href="{{ videoUrl + movieDetail.videos?.results?.[0]?.key }}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <ng-icon
-              class="text-primary-foreground"
-              hlm
-              name="lucidePlay"
-              size="sm"
-            />
-            Play Trailer
-          </a>
+          <hlm-dialog>
+            <button
+              hlmBtn
+              brnDialogTrigger
+              class="rounded-full flex flex-row gap-2 font-medium px-4"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ng-icon
+                class="text-primary-foreground"
+                hlm
+                name="lucidePlay"
+                size="sm"
+              />
+              Play Trailer
+            </button>
+            <hlm-dialog-content
+              [closeBtn]="false"
+              class="overflow-hidden p-0 xl:w-[1024px] lg:w-[800px] md:w-[640px] sm:w-[560px] w-[480px] aspect-video"
+              *brnDialogContent="let ctx"
+            >
+              <app-youtube-iframe
+                [title]="movieDetail.title"
+                [videoId]="movieDetail.videos?.results?.[0]?.key!"
+              />
+            </hlm-dialog-content>
+          </hlm-dialog>
         </div>
         <div class="flex flex-row gap-2 items-center">
           <span class="text-yellow-500 text-xl font-medium"> SCORE </span>

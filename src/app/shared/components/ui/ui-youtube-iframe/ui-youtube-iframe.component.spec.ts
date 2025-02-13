@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { MoviesByGenreComponent } from './movies-by-genre.component';
+import { UiYoutubeIframeComponent } from './ui-youtube-iframe.component';
 
-describe('MoviesByGenreComponent', () => {
-  let component: MoviesByGenreComponent;
-  let fixture: ComponentFixture<MoviesByGenreComponent>;
+describe('UiYoutubeIframeComponent', () => {
+  let component: UiYoutubeIframeComponent;
+  let fixture: ComponentFixture<UiYoutubeIframeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviesByGenreComponent ]
+      declarations: [ UiYoutubeIframeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MoviesByGenreComponent);
+    fixture = TestBed.createComponent(UiYoutubeIframeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

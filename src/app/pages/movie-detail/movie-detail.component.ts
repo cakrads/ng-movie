@@ -20,6 +20,9 @@ import { TmdbService } from '@app/services/tmbd/tmdb.service';
 import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
 import { DetailMediaComponent } from './detail-media/detail-media.component';
 import { FavoriteMovieService } from '@app/services/favorite-movie/favorite-movie.service';
+import { HlmDialogComponent, HlmDialogContentComponent, HlmDialogDescriptionDirective, HlmDialogFooterComponent, HlmDialogHeaderComponent, HlmDialogTitleDirective } from '@app/shared/components/ui/ui-dialog-helm/src';
+import { BrnDialogContentDirective, BrnDialogTriggerDirective } from '@spartan-ng/brain/dialog';
+import { YoutubeIframeComponent } from '@app/shared/components/ui/ui-youtube-iframe/ui-youtube-iframe.component';
 
 @Component({
   selector: 'app-detail',
@@ -36,7 +39,14 @@ import { FavoriteMovieService } from '@app/services/favorite-movie/favorite-movi
     HlmButtonDirective,
     HlmSkeletonComponent,
     RecommendationComponent,
-    DetailMediaComponent
+    DetailMediaComponent,
+
+    BrnDialogTriggerDirective,
+    BrnDialogContentDirective,
+    HlmDialogComponent,
+    HlmDialogContentComponent,
+
+    YoutubeIframeComponent
   ],
   providers: [provideIcons({ lucideStar, lucidePlay, lucideHeart })],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

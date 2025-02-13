@@ -28,7 +28,7 @@ Live Demo: [nganimation.vercel.app](https://nganimation.vercel.app)
 [✅] Movie Recommandation \
 [✅] Movie Media - Posters, Backdrops, and Videos  \
 [✅] Favorite \
-[ ] Video Trailer \
+[✅] Video Trailer \
 **List Movie** \
 [✅] List Movie \
 [✅] Filter \
@@ -87,13 +87,15 @@ vercel
 [✅] Update Readme \
 [✅] Add Feature My Favorite in Detail \
 [✅] Make sure how to deploy in vercel \
+[✅] Add Video: click trailer or vides will open dialog and embed youtube \
 [] Add page 404 \
 [] create documentation how to deploy Angular 19 in vercel \
 [] add eslint global \
 [] eslint delete unused import \
-[] Add Video: click trailer, open dialog, hit API, play the video \
 [] Theme \
 [] international i9 \
+[] Fix: The 'allowSignalWrites' flag is deprecated and no longer impacts effect() (writes are always allowed)
+[] Fix: Component ID generation collision detected.
 
 ### Example Project
 - https://github.com/tastejs/angular-movies/tree/main
