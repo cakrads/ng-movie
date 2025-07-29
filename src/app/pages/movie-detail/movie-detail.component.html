@@ -112,7 +112,7 @@
             (click)="toggleFavorite(movieDetail.id)"
             [ngClass]="[
               '!rounded-full flex flex-row gap-2 font-medium !p-0 !w-11 !h-11 group transition-all duration-300',
-              isFavorite(movieDetail.id)
+              isFavoriteState()
                 ? '!bg-primary'
                 : 'bg-secondary hover:bg-secondary hover:text-primary'
             ]"
@@ -120,7 +120,7 @@
             <ng-icon
               [ngClass]="[
                 'transition-all duration-300',
-                isFavorite(movieDetail.id)
+                isFavoriteState()
                   ? '!text-white'
                   : 'text-white group-hover:text-primary'
               ]"
@@ -141,7 +141,7 @@
       </div>
       <div class="max-w-4xl">
         <h4 [ngClass]="[hlmH4, '!text-2xl mb-3']">Genre</h4>
-        <div class="flex flex-row gap-4">
+        <div class="flex flex-row gap-4 overflow-x-scroll pb-3 sm:pb-0">
           <ng-container *ngFor="let genre of movieDetail.genres">
             <span class="rounded-full bg-secondary text-white px-5 py-2">
               {{ genre.name }}

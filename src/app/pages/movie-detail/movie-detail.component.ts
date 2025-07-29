@@ -4,6 +4,8 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
   OnInit,
+  afterNextRender,
+  signal,
 } from '@angular/core';
 import { ImageComponent } from '@components/ui/image/image.component';
 import { hlmH1, hlmH4 } from '@components/ui/ui-typography-helm/src';
@@ -20,7 +22,7 @@ import { TmdbService } from '@app/services/tmbd/tmdb.service';
 import { HlmSkeletonComponent } from '@app/shared/components/ui/ui-skeleton-helm/src';
 import { DetailMediaComponent } from './detail-media/detail-media.component';
 import { FavoriteMovieService } from '@app/services/favorite-movie/favorite-movie.service';
-import { HlmDialogComponent, HlmDialogContentComponent, HlmDialogDescriptionDirective, HlmDialogFooterComponent, HlmDialogHeaderComponent, HlmDialogTitleDirective } from '@app/shared/components/ui/ui-dialog-helm/src';
+import { HlmDialogComponent, HlmDialogContentComponent } from '@app/shared/components/ui/ui-dialog-helm/src';
 import { BrnDialogContentDirective, BrnDialogTriggerDirective } from '@spartan-ng/brain/dialog';
 import { YoutubeIframeComponent } from '@app/shared/components/ui/ui-youtube-iframe/ui-youtube-iframe.component';
 
@@ -63,11 +65,20 @@ export class MovieDetailPage implements OnInit {
   movieDetailLoading = true;
   movieDetail: IMovieDetailData = {} as IMovieDetailData;
   backdropUrl = '';
+  
+  // Track favorite state - starts as false to match SSR
+  isFavoriteState = signal(false);
 
   constructor(
     readonly tmdbService: TmdbService,
     readonly favoriteMovieService: FavoriteMovieService
-  ) { }
+  ) {
+    // Update favorite state after client-side hydration is complete
+    afterNextRender(() => {
+      // Update favorite state for current movie after hydration
+      this.updateFavoriteState();
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -88,6 +99,9 @@ export class MovieDetailPage implements OnInit {
           this.movieUrl +
           'w1920_and_h800_multi_faces' +
           this.movieDetail.backdrop_path;
+        
+        // Update favorite state when movie details are loaded
+        this.updateFavoriteState();
       },
       error: () => { },
     });
@@ -99,9 +113,13 @@ export class MovieDetailPage implements OnInit {
     } else {
       this.favoriteMovieService.addFavorite(movieId);
     }
+    // Update the state immediately after toggling
+    this.updateFavoriteState();
   }
 
-  isFavorite(movieId: number): boolean {
-    return this.favoriteMovieService.isFavorite(movieId);
+  updateFavoriteState(): void {
+    if (this.movieDetail.id) {
+      this.isFavoriteState.set(this.favoriteMovieService.isFavorite(this.movieDetail.id));
+    }
   }
 }
