@@ -141,12 +141,16 @@
       </div>
       <div class="max-w-4xl">
         <h4 [ngClass]="[hlmH4, '!text-2xl mb-3']">Genre</h4>
-        <div class="flex flex-row gap-4 overflow-x-scroll pb-3 sm:pb-0">
-          <ng-container *ngFor="let genre of movieDetail.genres">
-            <span class="rounded-full bg-secondary text-white px-5 py-2">
-              {{ genre.name }}
-            </span>
-          </ng-container>
+        <div
+          class="flex flex-row gap-4 overflow-x-auto md:flex-wrap md:overflow-x-visible pb-3 md:pb-0"
+        >
+          @for (genre of movieDetail.genres; track genre.id) {
+          <span
+            class="rounded-full bg-secondary text-white px-5 py-2 whitespace-nowrap"
+          >
+            {{ genre.name }}
+          </span>
+          }
         </div>
       </div>
       }
