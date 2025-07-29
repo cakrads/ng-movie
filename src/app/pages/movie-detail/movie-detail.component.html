@@ -113,7 +113,7 @@
             [ngClass]="[
               '!rounded-full flex flex-row gap-2 font-medium !p-0 !w-11 !h-11 group transition-all duration-300',
               isFavorite(movieDetail.id)
-                ? 'bg-primary text-white'
+                ? '!bg-primary'
                 : 'bg-secondary hover:bg-secondary hover:text-primary'
             ]"
           >
@@ -121,8 +121,8 @@
               [ngClass]="[
                 'transition-all duration-300',
                 isFavorite(movieDetail.id)
-                  ? 'text-white'
-                  : 'text-primary group-hover:text-primary'
+                  ? '!text-white'
+                  : 'text-white group-hover:text-primary'
               ]"
               hlm
               name="lucideHeart"

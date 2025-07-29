@@ -32,7 +32,6 @@ import { BrnDialogContentDirective, BrnDialogTriggerDirective } from '@spartan-n
     HlmIconDirective,
     HlmSkeletonComponent,
 
-    BrnDialogTriggerDirective,
     BrnDialogContentDirective,
     HlmDialogComponent,
     HlmDialogContentComponent,
