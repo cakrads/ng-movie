@@ -87,7 +87,7 @@
             </button>
             <hlm-dialog-content
               [closeBtn]="false"
-              class="overflow-hidden p-0 xl:w-[1024px] lg:w-[800px] md:w-[640px] sm:w-[560px] w-[480px] aspect-video"
+              class="overflow-hidden p-0 xl:w-[1024px] lg:w-[800px] md:w-[640px] sm:w-[560px] w-[calc(100vw-32px)] aspect-video"
               *brnDialogContent="let ctx"
             >
               <app-youtube-iframe

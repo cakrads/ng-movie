@@ -15,7 +15,7 @@ import { imagePlaceholder } from './image-placeholder';
   selector: 'app-image:not(p)',
   imports: [NgOptimizedImage, NgStyle, NgClass],
   templateUrl: './image.component.html',
-  styleUrls: ['./image.component.scss'],
+  styleUrls: ['./image.component.css'],
 })
 export class ImageComponent {
   @Input() ngSrc!: string; // Image source (required)
