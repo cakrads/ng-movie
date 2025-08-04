@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "dev": "node -r dotenv/config env.js && ng serve",
+    "predev": "node -r dotenv/config env.js",
+    "dev": "ng serve",
     "prebuild": "node -r dotenv/config env.js && npm test",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
