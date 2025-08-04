@@ -11,6 +11,8 @@
     "test:ci": "jest --runInBand",
     "test:coverage": "jest --coverage --watchAll=false",
     "serve:ssr:ng-movie": "node dist/ng-movie/server/server.mjs",
+    "vercel-build": "npm run build",
+    "vercel-local": "npx vercel build",
     "clean": "npx rimraf node_modules dist"
   },
   "private": true,
