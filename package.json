@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "dev": "node -r dotenv/config env.js && ng serve",
+    "prebuild": "npm test",
     "build": "node -r dotenv/config env.js && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
@@ -11,7 +12,7 @@
     "test:ci": "jest --runInBand",
     "test:coverage": "jest --coverage --watchAll=false",
     "serve:ssr:ng-movie": "node dist/ng-movie/server/server.mjs",
-    "vercel-build": "npm test && npm run build && npm run build:ssr",
+    "vercel-build": "npm run build && npm run build",
     "vercel-local": "npx vercel build",
     "clean": "npx rimraf node_modules dist"
   },
