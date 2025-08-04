@@ -16,6 +16,7 @@
     "serve:ssr:ng-movie": "node dist/ng-movie/server/server.mjs",
     "prevercel-build": "npm test",
     "vercel-build": "npm run build:ssr",
+    "vercel-local": "npx vercel build",
     "clean": "npx rimraf node_modules dist"
   },
   "private": true,

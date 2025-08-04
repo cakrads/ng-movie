@@ -12,8 +12,5 @@
     "api/index.js": {
       "includeFiles": "dist/ng-movie/**"
     }
-  },
-  "build": {
-    "command": "npm install --legacy-peer-deps && npm run vercel-build"
   }
 }

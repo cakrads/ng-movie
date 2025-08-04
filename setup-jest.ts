@@ -38,6 +38,7 @@ Object.defineProperty(window, 'matchMedia', {
 // Silence console.warn in tests
 global.console.warn = () => {};
 global.console.info = () => {};
+global.console.error = () => {};
 // Polyfill window.scrollTo to prevent JSDOM not implemented error
 Object.defineProperty(window, 'scrollTo', {
   value: () => {},
