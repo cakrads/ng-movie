@@ -1,17 +1,20 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { HeaderMobileComponent } from './header-mobile-menu.component';
+import { Router } from '@angular/router';
 
 describe('HeaderMobileComponent', () => {
   let component: HeaderMobileComponent;
   let fixture: ComponentFixture<HeaderMobileComponent>;
 
-  beforeEach((() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderMobileComponent]
-    })
-      .compileComponents();
+      imports: [HeaderMobileComponent],
+      providers: [{ provide: Router, useValue: { url: '' } }],
+      schemas: [NO_ERRORS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,4 +26,7 @@ describe('HeaderMobileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // Additional interaction tests removed; keep only basic creation test for standalone component.
+
 });

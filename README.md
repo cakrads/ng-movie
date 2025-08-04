@@ -97,6 +97,11 @@ vercel
 [] Fix: The 'allowSignalWrites' flag is deprecated and no longer impacts effect() (writes are always allowed)
 [] Fix: Component ID generation collision detected.
 
+### Jest
+#### Installation
+https://dev.to/fransaoco/how-to-set-up-jest-in-angular-19-step-by-step-guide-1c2p
+https://jestjs.io/docs/testing-frameworks
+
 ### Example Project
 - https://github.com/tastejs/angular-movies/tree/main
 - https://github.com/JancoBH/Angular-Movies

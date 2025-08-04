@@ -1,19 +1,29 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { of } from 'rxjs';
+import { TmdbService } from '@app/services/tmbd/tmdb.service';
 import { HomePage } from './home.component';
 
 describe('HomeComponent', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
+    const mockList = { results: [], total_pages: 1 } as any;
     TestBed.configureTestingModule({
-      declarations: [HomePage],
+      imports: [HomePage],
+      providers: [
+        { provide: TmdbService, useValue: {
+            getTrending: () => of(mockList),
+            getPopularMovie: () => of(mockList),
+            getNowPlaying: () => of(mockList),
+            getUpcoming: () => of(mockList)
+        } }
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomePage);

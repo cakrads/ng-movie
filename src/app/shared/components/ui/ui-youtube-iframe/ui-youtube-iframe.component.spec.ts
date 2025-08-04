@@ -1,24 +1,28 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { UiYoutubeIframeComponent } from './ui-youtube-iframe.component';
+import { YoutubeIframeComponent } from './ui-youtube-iframe.component';
 
 describe('UiYoutubeIframeComponent', () => {
-  let component: UiYoutubeIframeComponent;
-  let fixture: ComponentFixture<UiYoutubeIframeComponent>;
+  let component: YoutubeIframeComponent;
+  let fixture: ComponentFixture<YoutubeIframeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ UiYoutubeIframeComponent ]
+      imports: [ YoutubeIframeComponent ],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UiYoutubeIframeComponent);
+    fixture = TestBed.createComponent(YoutubeIframeComponent);
     component = fixture.componentInstance;
+    // provide a videoId so updateVideoUrl() sets a SafeResourceUrl
+    component.videoId = 'test123';
+    component.title = 'Test Video';
+    component.ngOnChanges();
     fixture.detectChanges();
   });
 

@@ -8,6 +8,7 @@ import { PaginationComponent } from '@app/shared/components/ui/ui-pagination-hel
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
+  standalone: true,
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],

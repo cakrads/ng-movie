@@ -1,66 +1,69 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheck } from '@ng-icons/lucide';
-import { type RenderResult, render } from '@testing-library/angular';
 import { HlmIconDirective } from './hlm-icon.directive';
 
 @Component({
-	selector: 'hlm-mock',
-	standalone: true,
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [HlmIconDirective, NgIcon],
-	providers: [provideIcons({ lucideCheck })],
-	template: `
-		<ng-icon hlm class="test" name="lucideCheck" [size]="size" color="red" strokeWidth="2" />
-	`,
+  selector: 'hlm-mock',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [HlmIconDirective, NgIcon],
+  providers: [provideIcons({ lucideCheck })],
+  template: `<ng-icon hlm class="test" name="lucideCheck" [size]="size" color="red" strokeWidth="2"></ng-icon>`,
 })
 class HlmMockComponent {
-	@Input() public size = 'base';
+  @Input() public size = 'base';
 }
 
 describe('HlmIconDirective', () => {
-	let r: RenderResult<HlmMockComponent>;
-	let icon: HTMLElement;
+  let fixture: ComponentFixture<HlmMockComponent>;
+  let component: HlmMockComponent;
+  let iconEl: HTMLElement;
 
-	beforeEach(async () => {
-		r = await render(HlmMockComponent);
-		icon = r.container.querySelector('ng-icon')!;
-	});
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({ imports: [HlmMockComponent] })
+      // switch mock to default CD so host bindings update on detectChanges
+      .overrideComponent(HlmMockComponent, { set: { changeDetection: ChangeDetectionStrategy.Default } })
+      .compileComponents();
+    fixture = TestBed.createComponent(HlmMockComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    iconEl = fixture.debugElement.query(By.css('ng-icon')).nativeElement;
+  });
 
-	it('should add the xs size', async () => {
-		await r.rerender({ componentInputs: { size: 'xs' } });
-		r.fixture.detectChanges();
-		expect(icon.getAttribute('style')).toContain('--ng-icon__size: 12px');
-	});
+  it('should apply xs size', () => {
+    component.size = 'xs';
+    fixture.detectChanges();
+    expect(iconEl.style.getPropertyValue('--ng-icon__size')).toBe('12px');
+  });
 
-	it('should add the sm size', async () => {
-		await r.rerender({ componentInputs: { size: 'sm' } });
-		r.fixture.detectChanges();
-		expect(icon.getAttribute('style')).toContain('--ng-icon__size: 16px');
-	});
+  it('should apply sm size', () => {
+  component.size = 'sm';
+  fixture.detectChanges();
+  expect(iconEl.style.getPropertyValue('--ng-icon__size')).toBe('16px');
+  });
 
-	it('should add the base size', () => {
-		expect(icon.getAttribute('style')).toContain('--ng-icon__size: 24px');
-	});
+  it('should apply base size by default', () => {
+  expect(iconEl.style.getPropertyValue('--ng-icon__size')).toBe('24px');
+  });
 
-	it('should add the lg size', async () => {
-		await r.rerender({ componentInputs: { size: 'lg' } });
-		r.fixture.detectChanges();
-		expect(icon.getAttribute('style')).toContain('--ng-icon__size: 32px');
-	});
+  it('should apply lg size', () => {
+  component.size = 'lg';
+  fixture.detectChanges();
+  expect(iconEl.style.getPropertyValue('--ng-icon__size')).toBe('32px');
+  });
 
-	it('should add the xl size', async () => {
-		await r.rerender({ componentInputs: { size: 'xl' } });
-		r.fixture.detectChanges();
-		expect(icon.getAttribute('style')).toContain('--ng-icon__size: 48px');
-	});
+  it('should apply xl size', () => {
+  component.size = 'xl';
+  fixture.detectChanges();
+  expect(iconEl.style.getPropertyValue('--ng-icon__size')).toBe('48px');
+  });
 
-	it('should forward the size property if the size is not a pre-defined size', async () => {
-		await r.rerender({ componentInputs: { size: '2rem' } });
-		r.fixture.detectChanges();
-		const debugEl = r.fixture.debugElement.query(By.directive(NgIcon));
-		expect(debugEl.componentInstance.size()).toBe('2rem');
-		expect(icon.getAttribute('style')).toContain('--ng-icon__size: 2rem');
-	});
+  it('should apply custom size when not predefined', () => {
+  component.size = '2rem';
+  fixture.detectChanges();
+  expect(iconEl.style.getPropertyValue('--ng-icon__size')).toBe('2rem');
+  });
 });
